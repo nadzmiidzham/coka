@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="271d17e6-29c5-4b54-a167-69ac09dcd8cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/pages/creature-page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home-page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/player-page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/menu_drawer/main-menu-drawer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home-page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home-page.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
