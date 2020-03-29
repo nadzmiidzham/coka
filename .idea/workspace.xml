@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6240eec6-0ae8-454a-bd19-81670ad1ef8e" name="Default Changelist" comment="" />
+    <list default="true" id="271d17e6-29c5-4b54-a167-69ac09dcd8cd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,11 +12,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1YcWkSP8Dv4ztE9ma2us7hvz83c" />
+  <component name="ProjectId" id="1ZmybJAM1dgSR29MrkpuXokr4NM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunDashboard">
@@ -36,18 +37,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6240eec6-0ae8-454a-bd19-81670ad1ef8e" name="Default Changelist" comment="" />
-      <created>1583242506259</created>
+      <changelist id="271d17e6-29c5-4b54-a167-69ac09dcd8cd" name="Default Changelist" comment="" />
+      <created>1585458633683</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1583242506259</updated>
+      <updated>1585458633683</updated>
     </task>
     <task id="LOCAL-00001" summary="initial commit">
-      <created>1585458505779</created>
+      <created>1585458786609</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1585458505779</updated>
+      <updated>1585458786609</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -57,9 +58,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
