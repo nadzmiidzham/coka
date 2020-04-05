@@ -1,5 +1,6 @@
 import 'package:coka/pages/creature-page.dart';
 import 'package:coka/pages/player-page.dart';
+import 'package:coka/widgets/menu_drawer/main-menu-drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        drawer: MainMenuDrawer(),
         appBar: AppBar(
           title: Text('CoKA'),
           bottom: TabBar(
