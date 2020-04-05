@@ -19,6 +19,10 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {},
+        ),
         body: TabBarView(
           children: <Widget>[
             PlayerPage(),
