@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="271d17e6-29c5-4b54-a167-69ac09dcd8cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/pages/creature-page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home-page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/player-page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/stat/ability-widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/stat/description-widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/stat/hp-widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/stat/profile-image-widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/stat/profile-name-widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+    </list>
+    <list id="ce6aaa01-df68-4a32-88d2-596974981c84" name="change to branch 40" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/widgets/player-stat-widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/player-page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/player-page.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,10 +36,24 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/v1-31" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="7" changelist="271d17e6-29c5-4b54-a167-69ac09dcd8cd" />
+        <range start1="4" end1="7" start2="9" end2="18" changelist="271d17e6-29c5-4b54-a167-69ac09dcd8cd" />
+        <range start1="8" end1="9" start2="19" end2="20" changelist="271d17e6-29c5-4b54-a167-69ac09dcd8cd" />
+        <range start1="27" end1="28" start2="38" end2="39" changelist="271d17e6-29c5-4b54-a167-69ac09dcd8cd" />
+        <range start1="31" end1="31" start2="42" end2="56" changelist="271d17e6-29c5-4b54-a167-69ac09dcd8cd" />
+        <range start1="42" end1="42" start2="67" end2="76" changelist="271d17e6-29c5-4b54-a167-69ac09dcd8cd" />
+        <range start1="73" end1="74" start2="107" end2="115" changelist="ce6aaa01-df68-4a32-88d2-596974981c84" />
+        <range start1="91" end1="92" start2="132" end2="134" changelist="ce6aaa01-df68-4a32-88d2-596974981c84" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1ZmybJAM1dgSR29MrkpuXokr4NM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -40,6 +65,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\personal-project\coka\lib\icons" />
+      <recent name="D:\personal-project\coka\icons" />
+      <recent name="D:\personal-project\coka\lib\widgets\stat" />
+      <recent name="D:\personal-project\coka\lib\widgets" />
+      <recent name="D:\personal-project\coka\lib\widgets\" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
