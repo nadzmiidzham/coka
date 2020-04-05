@@ -10,6 +10,7 @@ class CreaturePage extends StatelessWidget {
           CreatureStatWidget(),
           CreatureStatWidget(),
           CreatureStatWidget(),
+          SizedBox(height: 100,)
         ],
       ),
     );
