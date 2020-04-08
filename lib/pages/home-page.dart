@@ -44,7 +44,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         ),
         floatingActionButton: (_tabController.index == 1)? FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () {
+            _showCreatureGenerateMenu();
+          },
         ) : null,
         body: TabBarView(
           controller: _tabController,
@@ -55,5 +57,72 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         ),
       ),
     );
+  }
+
+  _showCreatureGenerateMenu() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10)
+        )
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: ButtonTheme(
+                  minWidth: double.infinity,
+                  buttonColor: Colors.blue,
+                  child: RaisedButton(
+                    child: Text(
+                      'Randomize',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    onPressed: () {
+                      _randomizeCreature();
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: ButtonTheme(
+                  minWidth: double.infinity,
+                  buttonColor: Colors.red,
+                  child: RaisedButton(
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    onPressed: () {
+                      _generateCreature();
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+    });
+  }
+
+  _randomizeCreature() {
+    Navigator.pop(context);
+  }
+
+  _generateCreature() {
+    Navigator.pop(context);
   }
 }
