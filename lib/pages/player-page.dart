@@ -8,7 +8,7 @@ class PlayerPage extends StatelessWidget {
       child: Center(
         child: ListView(
           children: <Widget>[
-            PlayerStatWidget(),
+            PlayerStatWidget(isSummary: false,),
           ],
         ),
       ),
