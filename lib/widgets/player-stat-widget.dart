@@ -4,6 +4,7 @@ import 'package:coka/models/Item.dart';
 import 'package:coka/models/Player.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
+import 'package:coka/widgets/stat/hp-widget.dart';
 import 'package:coka/widgets/stat/profile-image-widget.dart';
 import 'package:coka/widgets/stat/profile-name-widget.dart';
 import 'package:coka/widgets/stat/status-ailment-widget.dart';
@@ -56,10 +57,10 @@ class PlayerStatWidget extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           child: StatusAilmentWidget(statusAilments: player.statusAilments,),
         ),
-//        Padding(
-//          padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-//          child: HPWidget(),
-//        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+          child: HPWidget(maxHp: player.maxHp, curHp: player.curHp,),
+        ),
         Padding(
           padding: const EdgeInsets.all(5),
           child: AbilityWidget(abilities: player.abilities,),

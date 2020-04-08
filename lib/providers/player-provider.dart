@@ -19,7 +19,7 @@ class PlayerProvider extends ChangeNotifier {
       level: 2,
       description: 'This is Nadzmi',
       maxHp: 10,
-      curHp: 10,
+      curHp: 8,
       image: null,
       statusAilments: [
         StatusAilment(
