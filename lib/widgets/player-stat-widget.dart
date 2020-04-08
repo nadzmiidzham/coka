@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 
 class PlayerStatWidget extends StatelessWidget {
   final Player player;
+  final bool isSummary;
 
-  PlayerStatWidget({ this.player });
-
+  PlayerStatWidget({ this.player, this.isSummary=false });
+  
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -21,7 +22,7 @@ class PlayerStatWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _playerStatWidget(), // player stat widgets
-            _workerStatWidget(), // worker stat widgets
+            isSummary? SizedBox.shrink() : _workerStatWidget(), // worker stat widgets
           ],
         ),
       ),
@@ -48,7 +49,7 @@ class PlayerStatWidget extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           child: AbilityWidget(abilities: player.abilities,),
         ),
-        Padding(
+        isSummary? SizedBox.shrink() : Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
           child: DescriptionWidget(description: player.description,),
         ),
