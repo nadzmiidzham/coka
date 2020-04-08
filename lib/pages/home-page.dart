@@ -1,6 +1,7 @@
 import 'package:coka/pages/creature-page.dart';
 import 'package:coka/pages/player-page.dart';
 import 'package:coka/widgets/menu_drawer/main-menu-drawer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -62,7 +63,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   _showCreatureGenerateMenu() {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         return Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
