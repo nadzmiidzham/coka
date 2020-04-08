@@ -12,7 +12,7 @@ class PlayerPage extends StatelessWidget {
           children: <Widget>[
             Consumer<PlayerProvider>(
               builder: (context, provider, child) {
-                return PlayerStatWidget(player: provider.player);
+                return PlayerStatWidget(player: provider.player, isSummary: false);
               },
             ),
           ],
