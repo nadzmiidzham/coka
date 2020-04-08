@@ -1,7 +1,5 @@
-
-import 'package:coka/models/Ability.dart';
-import 'package:coka/models/Item.dart';
 import 'package:coka/models/Player.dart';
+import 'package:coka/models/Worker.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
 import 'package:coka/widgets/stat/hp-widget.dart';
@@ -13,21 +11,6 @@ import 'package:flutter/material.dart';
 class PlayerStatWidget extends StatelessWidget {
   final Player player;
 
-  // TODO: dummy data (remove before v1)
-  List<Ability> _workerAbilityList = [
-    Ability(),
-    Ability(),
-    Ability(),
-  ];
-  List<Item> _workerItemList = [
-    Item(),
-    Item(),
-    Item(),
-    Item(),
-    Item(),
-    Item(),
-  ];
-
   PlayerStatWidget({ this.player });
 
   @override
@@ -38,7 +21,7 @@ class PlayerStatWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _playerStatWidget(), // player stat widgets
-            // _workerStatWidget(), // worker stat widgets
+            _workerStatWidget(), // worker stat widgets
           ],
         ),
       ),
@@ -82,29 +65,43 @@ class PlayerStatWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: AbilityWidget(abilities: _workerAbilityList,),
+          child: AbilityWidget(abilities: player.workerAbilities,),
         ),
 
         // worker 1 item list
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
-          child: _workerItemWidget(_workerItemList),
+          child: _workerItemWidget(player.workers[0]),
         ),
 
         // worker 2 item list
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
-          child: _workerItemWidget(_workerItemList),
+          child: _workerItemWidget(player.workers[1]),
         ),
       ],
     );
   }
 
-  Widget _workerItemWidget(List<Item> itemList) {
-    List<Icon> _iconList = [];
+  Widget _workerItemWidget(Worker worker) {
+    List<Icon> itemList = [];
+    Widget itemWidget = SizedBox.shrink();
 
-    for(int x=0 ; x<itemList.length ; x++) {
-      _iconList.add(Icon(Icons.brightness_1));
+    if(worker.items != null) {
+      for(int x=0 ; x<worker.items.length ; x++) {
+        itemList.add(Icon(worker.items[x].icon));
+      }
+    }
+
+    if(itemList.isNotEmpty) {
+      itemWidget = Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            color: Colors.black12,
+            borderRadius: BorderRadius.circular(10)
+        ),
+        child: Row(children: itemList,),
+      );
     }
 
     return Row(
@@ -112,16 +109,9 @@ class PlayerStatWidget extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 5),
-          child: Icon(Icons.add),
+          child: Icon(worker.icon),
         ),
-        Container(
-          padding: const EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Colors.black12,
-            borderRadius: BorderRadius.circular(10)
-          ),
-          child: Row(children: _iconList,),
-        )
+        itemWidget
       ],
     );
   }
