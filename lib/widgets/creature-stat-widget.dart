@@ -48,7 +48,7 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: AbilityWidget(abilityList: _creatureAbilityList,),
+                child: AbilityWidget(abilities: _creatureAbilityList,),
               ),
               (isSummary)? SizedBox.shrink() : Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),

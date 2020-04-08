@@ -1,5 +1,7 @@
+import 'package:coka/providers/player-provider.dart';
 import 'package:coka/widgets/player-stat-widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PlayerPage extends StatelessWidget {
   @override
@@ -8,7 +10,11 @@ class PlayerPage extends StatelessWidget {
       child: Center(
         child: ListView(
           children: <Widget>[
-            PlayerStatWidget(isSummary: false,),
+            Consumer<PlayerProvider>(
+              builder: (context, provider, child) {
+                return PlayerStatWidget(player: provider.player, isSummary: false);
+              },
+            ),
           ],
         ),
       ),

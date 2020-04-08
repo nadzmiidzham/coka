@@ -1,28 +1,27 @@
+import 'package:coka/models/StatusAilment.dart';
 import 'package:flutter/material.dart';
 
 class StatusAilmentWidget extends StatelessWidget {
+  final List<StatusAilment> statusAilments;
+
+  StatusAilmentWidget({ this.statusAilments });
+
   @override
   Widget build(BuildContext context) {
-    // TODO: temp dummy data
-    List<IconData> statusAilmentList = [
-      Icons.trip_origin,
-      Icons.trip_origin,
-      Icons.trip_origin,
-    ];
-
     return Container(
       child: Row(
-        children: _statusAilmentList(statusAilmentList),
+        children: _statusAilmentWidgetList(),
       ),
     );
   }
 
-  // TODO: should use StatusAilment object
-  List<Widget> _statusAilmentList(List<IconData> statusAilmentList) {
+  List<Widget> _statusAilmentWidgetList() {
     List<Icon> statusAilmentIconList = [];
 
-    for(int x=0 ; x<statusAilmentList.length ; x++) {
-      statusAilmentIconList.add(Icon(statusAilmentList[x]));
+    if(statusAilments != null) {
+      for(int x=0 ; x<statusAilments.length ; x++) {
+        statusAilmentIconList.add(Icon(statusAilments[x].icon));
+      }
     }
 
     return statusAilmentIconList;
