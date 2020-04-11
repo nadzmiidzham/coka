@@ -48,7 +48,7 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: HPWidget(),
+                child: HPWidget(maxHp: creature.maxHp, curHp: creature.curHp,),
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
