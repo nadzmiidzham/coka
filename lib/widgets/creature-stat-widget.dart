@@ -44,7 +44,7 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: StatusAilmentWidget(),
+                child: StatusAilmentWidget(statusAilments: creature.statusAilments,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
