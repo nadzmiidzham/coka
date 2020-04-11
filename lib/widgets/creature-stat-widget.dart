@@ -49,7 +49,7 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
-                child: _creatureSpecialAbilityWidgetList(_creatureSpecialAbilityList),
+                child: _creatureSpecialAbilityWidgetList(creature.specialAbilities),
               ),
               (isSummary)? SizedBox.shrink() : Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
@@ -83,8 +83,8 @@ class CreatureStatWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.add),
-            Text('Knockback')
+            Icon(specialAbility.icon),
+            Text(specialAbility.name)
           ],
         ),
       ),
