@@ -2,17 +2,18 @@ import 'package:coka/models/Ability.dart';
 import 'package:flutter/material.dart';
 
 class AbilityWidget extends StatelessWidget {
-  final List<Ability> abilityList;
+  final List<Ability> abilities;
 
-  AbilityWidget({this.abilityList});
+  AbilityWidget({this.abilities});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement ability widget
     List<Widget> abilityWidgetList = [];
 
-    for(int x=0 ; x<abilityList.length ; x++) {
-      abilityWidgetList.add(_abilityWidget(abilityList[x]));
+    if(abilities != null) {
+      for(int x=0 ; x<abilities.length ; x++) {
+        abilityWidgetList.add(_abilityWidget(abilities[x]));
+      }
     }
 
     return Row(
@@ -30,8 +31,8 @@ class AbilityWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.add),
-              Text('2')
+              Icon(ability.icon),
+              Text(ability.value.toString())
             ],
           ),
         ),

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HPWidget extends StatelessWidget {
+  final int maxHp, curHp;
+
+  HPWidget({ this.maxHp, this.curHp });
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -13,13 +17,17 @@ class HPWidget extends StatelessWidget {
             width: double.infinity,
             color: Colors.red,
           ),
-          Container(
-            height: 20,
-            width: 100, // TODO: must be dynamic
-            color: Colors.green,
-          ),
+          _renderHp(context),
         ],
       ),
+    );
+  }
+
+  Widget _renderHp(BuildContext context) {
+    return Container(
+      height: 20,
+      width: MediaQuery.of(context).size.width * (curHp / maxHp),
+      color: Colors.green,
     );
   }
 }
