@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AbilityWidget extends StatelessWidget {
   final List<Ability> abilities;
 
-  AbilityWidget({this.abilities});
+  AbilityWidget({ this.abilities });
 
   @override
   Widget build(BuildContext context) {
