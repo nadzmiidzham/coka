@@ -14,14 +14,6 @@ class CreatureStatWidget extends StatelessWidget {
 
   CreatureStatWidget({ this.isSummary=false, this.creature });
 
-  // TODO: dummy data (remove before v1)
-  final List<Ability> _creatureSpecialAbilityList = [
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -53,7 +45,7 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               (isSummary)? SizedBox.shrink() : Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: DescriptionWidget(description: 'Description',),
+                child: DescriptionWidget(description: creature.description,),
               ),
             ],
           ),

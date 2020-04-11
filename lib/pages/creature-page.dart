@@ -24,7 +24,7 @@ class CreaturePage extends StatelessWidget {
     if(creaturelist != null) {
       for(int x=0 ; x< creaturelist.length ; x++) {
         creatureStatWidgetList.add(CreatureStatWidget(
-          isSummary: true,
+          isSummary: false,
           creature: creaturelist[x],
         ));
       }
