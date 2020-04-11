@@ -7,9 +7,9 @@ class CreaturePage extends StatelessWidget {
     return Container(
       child: ListView(
         children: <Widget>[
+          CreatureStatWidget(isSummary: true,),
           CreatureStatWidget(),
-          CreatureStatWidget(),
-          CreatureStatWidget(),
+          CreatureStatWidget(isSummary: true,),
           SizedBox(height: 100,)
         ],
       ),

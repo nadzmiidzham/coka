@@ -8,7 +8,9 @@ import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
 class CreatureStatWidget extends StatelessWidget {
-  final bool isSummary = false;
+  final bool isSummary;
+
+  CreatureStatWidget({ this.isSummary=false });
 
   // TODO: dummy data (remove before v1)
   final List<Ability> _creatureAbilityList = [
