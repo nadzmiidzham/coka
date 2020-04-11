@@ -1,6 +1,7 @@
 
 import 'package:coka/models/Ability.dart';
 import 'package:coka/models/Item.dart';
+import 'package:coka/models/Player.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
 import 'package:coka/widgets/stat/hp-widget.dart';
@@ -10,14 +11,12 @@ import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
 class PlayerStatWidget extends StatelessWidget {
+  final Player player;
+  final bool isSummary;
+
+  PlayerStatWidget({ this.player, this.isSummary=false });
+
   // TODO: dummy data (remove before v1)
-  List<Ability> _playerAbilityList = [
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-  ];
   List<Ability> _workerAbilityList = [
     Ability(),
     Ability(),
@@ -40,7 +39,7 @@ class PlayerStatWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _playerStatWidget(), // player stat widgets
-            _workerStatWidget(), // worker stat widgets
+            isSummary? SizedBox.shrink() : _workerStatWidget(), // worker stat widgets
           ],
         ),
       ),
@@ -53,23 +52,23 @@ class PlayerStatWidget extends StatelessWidget {
         ProfileImageWidget(),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: ProfileNameWidget(statType: StatType.player,),
+          child: ProfileNameWidget(statType: StatType.player, name: player.name, value: player.level,),
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: StatusAilmentWidget(),
+          child: StatusAilmentWidget(statusAilments: player.statusAilments,),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: HPWidget(),
+          child: HPWidget(maxHp: player.maxHp, curHp: player.curHp,),
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: AbilityWidget(abilityList: _playerAbilityList,),
+          child: AbilityWidget(abilities: player.abilities,),
         ),
-        Padding(
+        isSummary? SizedBox.shrink() : Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: DescriptionWidget(),
+          child: DescriptionWidget(description: player.description,),
         ),
       ],
     );
@@ -84,7 +83,7 @@ class PlayerStatWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: AbilityWidget(abilityList: _workerAbilityList,),
+          child: AbilityWidget(abilities: _workerAbilityList,),
         ),
 
         // worker 1 item list
