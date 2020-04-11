@@ -15,13 +15,6 @@ class CreatureStatWidget extends StatelessWidget {
   CreatureStatWidget({ this.isSummary=false, this.creature });
 
   // TODO: dummy data (remove before v1)
-  final List<Ability> _creatureAbilityList = [
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-  ];
   final List<Ability> _creatureSpecialAbilityList = [
     Ability(),
     Ability(),
@@ -52,15 +45,15 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: AbilityWidget(abilities: _creatureAbilityList,),
-              ),
-              (isSummary)? SizedBox.shrink() : Padding(
-                padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: DescriptionWidget(description: 'Description',),
+                child: AbilityWidget(abilities: creature.mainAbilities,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
                 child: _creatureSpecialAbilityWidgetList(_creatureSpecialAbilityList),
+              ),
+              (isSummary)? SizedBox.shrink() : Padding(
+                padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+                child: DescriptionWidget(description: 'Description',),
               ),
             ],
           ),
