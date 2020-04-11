@@ -1,18 +1,35 @@
+import 'package:coka/models/Creature.dart';
+import 'package:coka/providers/creature-provider.dart';
 import 'package:coka/widgets/creature-stat-widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CreaturePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView(
-        children: <Widget>[
-          CreatureStatWidget(isSummary: true,),
-          CreatureStatWidget(),
-          CreatureStatWidget(isSummary: true,),
-          SizedBox(height: 100,)
-        ],
+      child: Consumer<CreatureProvider>(
+        builder: (context, provider, child) {
+          return ListView(
+            children: _creatureList(provider.creaturelist),
+          );
+        },
       ),
     );
+  }
+
+  List<Widget> _creatureList(List<Creature> creaturelist) {
+    List<CreatureStatWidget> creatureStatWidgetList = [];
+
+    if(creaturelist != null) {
+      for(int x=0 ; x< creaturelist.length ; x++) {
+        creatureStatWidgetList.add(CreatureStatWidget(
+          isSummary: true,
+          creature: creaturelist[x],
+        ));
+      }
+    }
+
+    return creatureStatWidgetList;
   }
 }

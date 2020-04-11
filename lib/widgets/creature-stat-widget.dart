@@ -1,4 +1,5 @@
 import 'package:coka/models/Ability.dart';
+import 'package:coka/models/Creature.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
 import 'package:coka/widgets/stat/hp-widget.dart';
@@ -9,8 +10,9 @@ import 'package:flutter/material.dart';
 
 class CreatureStatWidget extends StatelessWidget {
   final bool isSummary;
+  final Creature creature;
 
-  CreatureStatWidget({ this.isSummary=false });
+  CreatureStatWidget({ this.isSummary=false, this.creature });
 
   // TODO: dummy data (remove before v1)
   final List<Ability> _creatureAbilityList = [
@@ -35,7 +37,7 @@ class CreatureStatWidget extends StatelessWidget {
         child: Container(
           child: Column(
             children: <Widget>[
-              ProfileImageWidget(),
+              ProfileImageWidget(image: creature.image,),
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: ProfileNameWidget(statType: StatType.creature,),
