@@ -8,7 +8,7 @@ import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
 class CreatureStatWidget extends StatelessWidget {
-  final bool isSummary = true;
+  final bool isSummary = false;
 
   // TODO: dummy data (remove before v1)
   final List<Ability> _creatureAbilityList = [
@@ -52,7 +52,7 @@ class CreatureStatWidget extends StatelessWidget {
               ),
               (isSummary)? SizedBox.shrink() : Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: DescriptionWidget(),
+                child: DescriptionWidget(description: 'Description',),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
