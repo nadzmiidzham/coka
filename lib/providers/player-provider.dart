@@ -1,4 +1,5 @@
 import 'package:coka/models/Ability.dart';
+import 'package:coka/models/Item.dart';
 import 'package:coka/models/Player.dart';
 import 'package:coka/models/StatusAilment.dart';
 import 'package:coka/models/Worker.dart';
@@ -72,26 +73,37 @@ class PlayerProvider extends ChangeNotifier {
             description: '',
             type: 1,
             value: 1,
-            icon: null
+            icon: Icons.account_balance_wallet
         ),
         Ability(
             name: '',
             description: '',
             type: 1,
-            value: 1,
-            icon: null
+            value: 2,
+            icon: Icons.library_add
         ),
         Ability(
             name: '',
             description: '',
             type: 1,
-            value: 1,
-            icon: null
+            value: 3,
+            icon: Icons.blur_circular
         )
       ],
       workers: [
-        Worker(no: 1),
-        Worker(no: 2)
+        Worker(
+          no: 1,
+          icon: Icons.adb,
+          items: [
+            Item(name: '', type: 1, icon: Icons.face),
+            Item(name: '', type: 1, icon: Icons.face),
+            Item(name: '', type: 1, icon: Icons.face),
+            Item(name: '', type: 1, icon: Icons.face),
+            Item(name: '', type: 1, icon: Icons.face),
+            Item(name: '', type: 1, icon: Icons.face),
+          ]
+        ),
+        Worker(no: 2, icon: Icons.alarm_on)
       ],
     );
 
