@@ -21,7 +21,7 @@ class PlayerProvider extends ChangeNotifier {
       description: 'This is Nadzmi',
       maxHp: 10,
       curHp: 8,
-      image: null,
+      image: 'images/test.jpg',
       statusAilments: [
         StatusAilment(
           name: '',
@@ -106,6 +106,31 @@ class PlayerProvider extends ChangeNotifier {
         Worker(no: 2, icon: Icons.alarm_on)
       ],
     );
+
+    notifyListeners();
+  }
+
+  // notify listener action
+  increaseHP(int amount) {
+    int newHp = player.curHp + amount;
+
+    if(newHp >= player.maxHp) {
+      player.curHp = player.maxHp;
+    } else {
+      player.curHp = newHp;
+    }
+
+    notifyListeners();
+  }
+
+  decreaseHP(int amount) {
+    int newHp = player.curHp - amount;
+
+    if(newHp <= 0) {
+      player.curHp = 0;
+    } else {
+      player.curHp = newHp;
+    }
 
     notifyListeners();
   }

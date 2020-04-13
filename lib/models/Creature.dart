@@ -1,29 +1,26 @@
 import 'package:coka/models/Ability.dart';
 import 'package:coka/models/StatusAilment.dart';
-import 'package:coka/models/Worker.dart';
 import 'package:flutter/cupertino.dart';
 
-class Player {
-  String name;
-  int level;
-  int maxHp, curHp;
+class Creature {
   String image;
+  String name;
+  int xp;
+  int maxHp, curHp;
   String description;
-  List<Ability> abilities;
-  List<Ability> workerAbilities;
+  List<Ability> mainAbilities;
+  List<Ability> specialAbilities;
   List<StatusAilment> statusAilments;
-  List<Worker> workers;
 
-  Player({
+  Creature({
+    this.image,
     this.name,
-    this.level,
+    this.xp,
     this.maxHp,
     this.curHp,
-    this.abilities,
-    this.workerAbilities,
-    this.image,
     this.description,
-    this.statusAilments,
-    this.workers,
+    this.mainAbilities,
+    this.specialAbilities,
+    this.statusAilments
   });
 }
