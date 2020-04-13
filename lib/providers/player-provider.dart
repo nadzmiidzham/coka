@@ -110,11 +110,12 @@ class PlayerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // notify listener action
+  // get action
   getHpPercent() {
     return (player.curHp / player.maxHp);
   }
 
+  // notify listener action
   increaseHP(int amount) {
     int newHp = player.curHp + amount;
 
