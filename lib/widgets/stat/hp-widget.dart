@@ -20,63 +20,48 @@ class HPWidget extends StatelessWidget {
             color: Colors.red,
           ),
           _renderHp(context),
-          Center(child: _hpValueWidget(context),)
+          Center(child: _hpValueWidget(),)
         ],
       ),
     );
   }
 
   Widget _renderHp(BuildContext context) {
-    return Selector<PlayerProvider, double>(
-      selector: (context, provider) => provider.getHpPercent(),
-      builder: (context, hpPercent, child) {
-        return Container(
-          height: 20,
-          width: MediaQuery.of(context).size.width * hpPercent,
-          color: Colors.green,
-        );
-      },
+    return Container(
+      height: 20,
+      width: MediaQuery.of(context).size.width * (curHp / maxHp),
+      color: Colors.green,
     );
   }
 
-  Widget _hpValueWidget(BuildContext context) {
+  Widget _hpValueWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Selector<PlayerProvider, int>(
-          selector: (context, provider) => provider.player.curHp,
-          builder: (context, curHp, child) {
-            return Text(
-              curHp.toString(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
-              ),
-            );
-          },
+        Text(
+          curHp.toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          ),
         ),
         Text(
           ' / ',
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold
+            color: Colors.white,
+            fontWeight: FontWeight.bold
           ),
         ),
-        Selector<PlayerProvider, int>(
-          selector: (context, provider) => provider.player.maxHp,
-          builder: (context, maxHp, child) {
-            return Text(
-              maxHp.toString(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
-              ),
-            );
-          },
-        ),
+        Text(
+          maxHp.toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          ),
+        )
       ],
     );
   }
