@@ -3,7 +3,7 @@ import 'package:coka/models/StatusAilment.dart';
 import 'package:flutter/cupertino.dart';
 
 class Creature {
-  Image image;
+  String image;
   String name;
   int xp;
   int maxHp, curHp;

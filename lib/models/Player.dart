@@ -7,7 +7,7 @@ class Player {
   String name;
   int level;
   int maxHp, curHp;
-  Image image;
+  String image;
   String description;
   List<Ability> abilities;
   List<Ability> workerAbilities;
