@@ -32,7 +32,7 @@ class PlayerStatWidget extends StatelessWidget {
   Widget _playerStatWidget() {
     return Column(
       children: <Widget>[
-        ProfileImageWidget(),
+        ProfileImageWidget(image: player.image,),
         Padding(
           padding: const EdgeInsets.all(5),
           child: ProfileNameWidget(statType: StatType.player, name: player.name, value: player.level,),
