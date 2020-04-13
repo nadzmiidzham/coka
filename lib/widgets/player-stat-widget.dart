@@ -49,7 +49,7 @@ class PlayerStatWidget extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           child: AbilityWidget(abilities: player.abilities,),
         ),
-        isSummary? SizedBox.shrink() : Padding(
+        (isSummary)? SizedBox.shrink() : Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
           child: DescriptionWidget(description: player.description,),
         ),
