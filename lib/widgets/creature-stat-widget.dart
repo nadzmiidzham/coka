@@ -1,4 +1,5 @@
 import 'package:coka/models/Ability.dart';
+import 'package:coka/models/Creature.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
 import 'package:coka/widgets/stat/hp-widget.dart';
@@ -8,22 +9,10 @@ import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
 class CreatureStatWidget extends StatelessWidget {
-  final bool isSummary = true;
+  final bool isSummary;
+  final Creature creature;
 
-  // TODO: dummy data (remove before v1)
-  final List<Ability> _creatureAbilityList = [
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-  ];
-  final List<Ability> _creatureSpecialAbilityList = [
-    Ability(),
-    Ability(),
-    Ability(),
-    Ability(),
-  ];
+  CreatureStatWidget({ this.isSummary=false, this.creature });
 
   @override
   Widget build(BuildContext context) {
@@ -33,30 +22,30 @@ class CreatureStatWidget extends StatelessWidget {
         child: Container(
           child: Column(
             children: <Widget>[
-              ProfileImageWidget(),
+              ProfileImageWidget(image: creature.image,),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: ProfileNameWidget(statType: StatType.creature,),
+                child: ProfileNameWidget(statType: StatType.creature, name: creature.name, value: creature.xp,),
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: StatusAilmentWidget(),
+                child: StatusAilmentWidget(statusAilments: creature.statusAilments,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: HPWidget(),
+                child: HPWidget(maxHp: creature.maxHp, curHp: creature.curHp,),
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: AbilityWidget(abilities: _creatureAbilityList,),
-              ),
-              (isSummary)? SizedBox.shrink() : Padding(
-                padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: DescriptionWidget(),
+                child: AbilityWidget(abilities: creature.mainAbilities,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
-                child: _creatureSpecialAbilityWidgetList(_creatureSpecialAbilityList),
+                child: _creatureSpecialAbilityWidgetList(creature.specialAbilities),
+              ),
+              (isSummary)? SizedBox.shrink() : Padding(
+                padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+                child: DescriptionWidget(description: creature.description,),
               ),
             ],
           ),
@@ -86,8 +75,8 @@ class CreatureStatWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.add),
-            Text('Knockback')
+            Icon(specialAbility.icon),
+            Text(specialAbility.name)
           ],
         ),
       ),

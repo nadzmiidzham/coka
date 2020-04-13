@@ -109,4 +109,29 @@ class PlayerProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  // notify listener action
+  increaseHP(int amount) {
+    int newHp = player.curHp + amount;
+
+    if(newHp >= player.maxHp) {
+      player.curHp = player.maxHp;
+    } else {
+      player.curHp = newHp;
+    }
+
+    notifyListeners();
+  }
+
+  decreaseHP(int amount) {
+    int newHp = player.curHp - amount;
+
+    if(newHp <= 0) {
+      player.curHp = 0;
+    } else {
+      player.curHp = newHp;
+    }
+
+    notifyListeners();
+  }
 }
