@@ -15,11 +15,7 @@ class CreatureProvider extends ChangeNotifier {
   initCreature() {
     creaturelist = [
       Creature(
-        image: Image.network(
-          'https://picsum.photos/250?image=9',
-          fit: BoxFit.fill,
-          width: double.infinity,
-        ),
+        image: 'images/test.jpg',
         name: 'Creature 1',
         description: 'Creature 1 description',
         xp: 1,
@@ -74,11 +70,7 @@ class CreatureProvider extends ChangeNotifier {
         statusAilments: []
       ),
       Creature(
-          image: Image.network(
-            'https://picsum.photos/250?image=9',
-            fit: BoxFit.fill,
-            width: double.infinity,
-          ),
+          image: 'images/test.jpg',
           name: 'Creature 2',
           description: 'Creature 2 description',
           xp: 2,
@@ -140,11 +132,7 @@ class CreatureProvider extends ChangeNotifier {
           statusAilments: []
       ),
       Creature(
-          image: Image.network(
-            'https://picsum.photos/250?image=9',
-            fit: BoxFit.fill,
-            width: double.infinity,
-          ),
+          image: 'images/test.jpg',
           name: 'Creature 3',
           description: 'Creature 3 description',
           xp: 3,

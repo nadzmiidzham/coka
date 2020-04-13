@@ -22,7 +22,7 @@ class CreatureStatWidget extends StatelessWidget {
         child: Container(
           child: Column(
             children: <Widget>[
-              ProfileImageWidget(image: creature.image,),
+              ProfileImageWidget(path: creature.image,),
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: ProfileNameWidget(statType: StatType.creature, name: creature.name, value: creature.xp,),

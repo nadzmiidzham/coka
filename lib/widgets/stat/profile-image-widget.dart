@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
 class ProfileImageWidget extends StatelessWidget {
-  final Image image;
+  final String path;
 
-  ProfileImageWidget({ this.image });
+  ProfileImageWidget({ this.path });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 150,
-      child: image,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          alignment: Alignment(0, 1),
+          image: AssetImage(path),
+          fit: BoxFit.fitWidth
+        )
+      ),
     );
   }
 }
