@@ -1,18 +1,18 @@
-import 'package:coka/models/Ability.dart';
-import 'package:coka/models/StatusAilment.dart';
+import 'package:coka/models/AbilityModel.dart';
+import 'package:coka/models/StatusAilmentModel.dart';
 import 'package:flutter/cupertino.dart';
 
-class Creature {
+class CreatureModel {
   String image;
   String name;
   int xp;
   int maxHp, curHp;
   String description;
-  List<Ability> mainAbilities;
-  List<Ability> specialAbilities;
-  List<StatusAilment> statusAilments;
+  List<AbilityModel> mainAbilities;
+  List<AbilityModel> specialAbilities;
+  List<StatusAilmentModel> statusAilments;
 
-  Creature({
+  CreatureModel({
     this.image,
     this.name,
     this.xp,

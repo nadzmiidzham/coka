@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class HPWidget extends StatelessWidget {
   final int maxHp, curHp;
 
-  HPWidget({ this.maxHp=1, this.curHp=1 });
+  HPWidget({ this.maxHp, this.curHp });
 
   @override
   Widget build(BuildContext context) {

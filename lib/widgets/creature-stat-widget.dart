@@ -1,5 +1,5 @@
-import 'package:coka/models/Ability.dart';
-import 'package:coka/models/Creature.dart';
+import 'package:coka/models/AbilityModel.dart';
+import 'package:coka/models/CreatureModel.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
 import 'package:coka/widgets/stat/hp-widget.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class CreatureStatWidget extends StatelessWidget {
   final bool isSummary;
-  final Creature creature;
+  final CreatureModel creature;
 
   CreatureStatWidget({ this.isSummary=false, this.creature });
 
@@ -54,7 +54,7 @@ class CreatureStatWidget extends StatelessWidget {
     );
   }
 
-  Widget _creatureSpecialAbilityWidgetList(List<Ability> specialAbilityList) {
+  Widget _creatureSpecialAbilityWidgetList(List<AbilityModel> specialAbilityList) {
     List<Widget> specialAbilityWidgetList = [];
 
     for(var x=0 ; x<specialAbilityList.length ; x++) {
@@ -67,7 +67,7 @@ class CreatureStatWidget extends StatelessWidget {
     );
   }
 
-  Widget _creatureSpecialAbilityWidget(Ability specialAbility) {
+  Widget _creatureSpecialAbilityWidget(AbilityModel specialAbility) {
     return Card(
       color: Colors.green,
       child: Container(

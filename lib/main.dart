@@ -1,3 +1,4 @@
+import 'package:coka/db/db.dart';
 import 'package:coka/pages/home-page.dart';
 import 'package:coka/providers/creature-provider.dart';
 import 'package:coka/providers/player-provider.dart';
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        Provider(create: (_) => DB(),),
         ChangeNotifierProvider(create: (_) => PlayerProvider()),
         ChangeNotifierProvider(create: (_) => CreatureProvider()),
       ],

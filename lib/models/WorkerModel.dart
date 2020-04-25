@@ -1,12 +1,12 @@
-import 'package:coka/models/Item.dart';
+import 'package:coka/models/ItemModel.dart';
 import 'package:flutter/cupertino.dart';
 
-class Worker {
+class WorkerModel {
   int no;
-  List<Item> items;
+  List<ItemModel> items;
   IconData icon;
 
-  Worker({
+  WorkerModel({
     this.no,
     this.items,
     this.icon,

@@ -6,7 +6,7 @@ class ProfileNameWidget extends StatelessWidget {
   final String name;
   final int value;
 
-  ProfileNameWidget({ this.statType=StatType.player, this.name='', this.value=0 });
+  ProfileNameWidget({ this.statType, this.name, this.value });
 
   @override
   Widget build(BuildContext context) {

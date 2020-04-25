@@ -1,8 +1,8 @@
-import 'package:coka/models/Ability.dart';
+import 'package:coka/models/AbilityModel.dart';
 import 'package:flutter/material.dart';
 
 class AbilityWidget extends StatelessWidget {
-  final List<Ability> abilities;
+  final List<AbilityModel> abilities;
 
   AbilityWidget({this.abilities});
 
@@ -22,7 +22,7 @@ class AbilityWidget extends StatelessWidget {
     );
   }
 
-  Widget _abilityWidget(Ability ability) {
+  Widget _abilityWidget(AbilityModel ability) {
     return Card(
       child: Container(
         height: 50,
