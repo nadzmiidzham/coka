@@ -1,10 +1,10 @@
-import 'package:coka/db/abilities.dart';
-import 'package:coka/db/creatures.dart';
-import 'package:coka/db/items.dart';
-import 'package:coka/db/players.dart';
-import 'package:coka/db/rules.dart';
-import 'package:coka/db/status_ailments.dart';
-import 'package:coka/db/workers.dart';
+import 'package:coka/db/tables/abilities.dart';
+import 'package:coka/db/tables/creatures.dart';
+import 'package:coka/db/tables/items.dart';
+import 'package:coka/db/tables/players.dart';
+import 'package:coka/db/tables/rules.dart';
+import 'package:coka/db/tables/status_ailments.dart';
+import 'package:coka/db/tables/workers.dart';
 import 'package:moor/moor.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 

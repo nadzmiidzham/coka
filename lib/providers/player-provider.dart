@@ -1,13 +1,13 @@
-import 'package:coka/models/Ability.dart';
-import 'package:coka/models/Item.dart';
-import 'package:coka/models/Player.dart';
-import 'package:coka/models/StatusAilment.dart';
-import 'package:coka/models/Worker.dart';
+import 'package:coka/models/AbilityModel.dart';
+import 'package:coka/models/ItemModel.dart';
+import 'package:coka/models/PlayerModel.dart';
+import 'package:coka/models/StatusAilmentModel.dart';
+import 'package:coka/models/WorkerModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PlayerProvider extends ChangeNotifier {
-  Player player;
+  PlayerModel player;
 
   PlayerProvider() {
     initPlayer();
@@ -15,7 +15,7 @@ class PlayerProvider extends ChangeNotifier {
 
   // other methods
   initPlayer() {
-    this.player = Player(
+    this.player = PlayerModel(
       name: 'Nadzmi',
       level: 2,
       description: 'This is Nadzmi',
@@ -23,7 +23,7 @@ class PlayerProvider extends ChangeNotifier {
       curHp: 8,
       image: 'images/test.jpg',
       statusAilments: [
-        StatusAilment(
+        StatusAilmentModel(
           name: '',
           description: '',
           value: 0,
@@ -31,35 +31,35 @@ class PlayerProvider extends ChangeNotifier {
         )
       ],
       abilities: [
-        Ability(
+        AbilityModel(
           name: '',
           description: '',
           type: 1,
           value: 1,
           icon: Icons.description
         ),
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
             value: 2,
             icon: Icons.brightness_1
         ),
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
             value: 3,
             icon: Icons.trip_origin
         ),
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
             value: 4,
             icon: Icons.ac_unit
         ),
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
@@ -68,21 +68,21 @@ class PlayerProvider extends ChangeNotifier {
         )
       ],
       workerAbilities: [
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
             value: 1,
             icon: Icons.account_balance_wallet
         ),
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
             value: 2,
             icon: Icons.library_add
         ),
-        Ability(
+        AbilityModel(
             name: '',
             description: '',
             type: 1,
@@ -91,19 +91,19 @@ class PlayerProvider extends ChangeNotifier {
         )
       ],
       workers: [
-        Worker(
+        WorkerModel(
           no: 1,
           icon: Icons.adb,
           items: [
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
+            ItemModel(name: '', type: 1, icon: Icons.face),
+            ItemModel(name: '', type: 1, icon: Icons.face),
+            ItemModel(name: '', type: 1, icon: Icons.face),
+            ItemModel(name: '', type: 1, icon: Icons.face),
+            ItemModel(name: '', type: 1, icon: Icons.face),
+            ItemModel(name: '', type: 1, icon: Icons.face),
           ]
         ),
-        Worker(no: 2, icon: Icons.alarm_on)
+        WorkerModel(no: 2, icon: Icons.alarm_on)
       ],
     );
 
