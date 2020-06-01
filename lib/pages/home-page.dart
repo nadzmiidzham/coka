@@ -1,5 +1,5 @@
-import 'package:coka/pages/creature-page.dart';
-import 'package:coka/pages/player-page.dart';
+import 'package:coka/pages/creature-tab-page.dart';
+import 'package:coka/pages/player-tab-page.dart';
 import 'package:coka/widgets/menu_drawer/main-menu-drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +52,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         body: TabBarView(
           controller: _tabController,
           children: <Widget>[
-            PlayerPage(),
-            CreaturePage()
+            PlayerTabPage(),
+            CreatureTabPage()
           ],
         ),
       ),
