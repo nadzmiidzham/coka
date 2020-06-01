@@ -1,4 +1,6 @@
+import 'package:coka/pages/about-page.dart';
 import 'package:coka/pages/home-page.dart';
+import 'package:coka/pages/tutorial-page.dart';
 import 'package:coka/providers/creature-provider.dart';
 import 'package:coka/providers/player-provider.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => HomePage(),
+          '/tutorial': (context) => TutorialPage(),
+          '/about': (context) => AboutPage(),
         },
       ),
     );

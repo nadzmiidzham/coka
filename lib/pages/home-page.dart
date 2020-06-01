@@ -1,5 +1,6 @@
 import 'package:coka/pages/creature-tab-page.dart';
 import 'package:coka/pages/player-tab-page.dart';
+import 'package:coka/pages/story-tab-page.dart';
 import 'package:coka/widgets/menu_drawer/main-menu-drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void initState() {
     super.initState();
 
-    _tabController = TabController(vsync: this, length: 2, initialIndex: 0)
+    _tabController = TabController(vsync: this, length: 3, initialIndex: 0)
       ..addListener(() {
         setState(() {});
       });
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: _tabController.length,
       child: Scaffold(
         drawer: MainMenuDrawer(),
         appBar: AppBar(
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           bottom: TabBar(
             controller: _tabController,
             tabs: <Widget>[
+              Tab(text: 'Story',),
               Tab(text: 'Player',),
               Tab(text: 'Creature',)
             ],
@@ -52,6 +54,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         body: TabBarView(
           controller: _tabController,
           children: <Widget>[
+            StoryTabPage(),
             PlayerTabPage(),
             CreatureTabPage()
           ],
