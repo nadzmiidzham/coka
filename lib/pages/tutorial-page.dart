@@ -32,18 +32,30 @@ class TutorialPage extends StatelessWidget {
                 // manually complete tutorial
                 tutorialList[x].isComplete = value;
                 provider.updateTutorial(tutorialList[x]);
+
+                if(tutorialList[x].isComplete) {
+                  // show completed message
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text('Finished ${tutorialList[x].title}'),
+                      duration: Duration(seconds: 1)
+                  ));
+                }
               },
             ),
             title: Text(tutorialList[x].title),
             onTap: () {
-              // complete the tutorial
+              if(tutorialList[x].isComplete) {
+                return;
+              }
+
+              // complete selected tutorial
               tutorialList[x].isComplete = true;
               provider.updateTutorial(tutorialList[x]);
 
               // show completed message
               Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text('Finished ${tutorialList[x].title}'),
-                duration: Duration(seconds: 1)
+                  content: Text('Finished ${tutorialList[x].title}'),
+                  duration: Duration(seconds: 1)
               ));
             },
           );
