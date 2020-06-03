@@ -1,11 +1,11 @@
-import 'package:coka/models/AbilityModel.dart';
-import 'package:coka/models/CreatureModel.dart';
-import 'package:coka/models/StatusAilmentModel.dart';
+import 'package:coka/models/Ability.dart';
+import 'package:coka/models/Creature.dart';
+import 'package:coka/models/StatusAilment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CreatureProvider extends ChangeNotifier {
-  List<CreatureModel> creaturelist;
+  List<Creature> creaturelist;
 
   CreatureProvider() {
     initCreature();
@@ -14,7 +14,7 @@ class CreatureProvider extends ChangeNotifier {
   // init method
   initCreature() {
     creaturelist = [
-      CreatureModel(
+      Creature(
         image: 'images/test.jpg',
         name: 'Creature 1',
         description: 'Creature 1 description',
@@ -22,35 +22,35 @@ class CreatureProvider extends ChangeNotifier {
         maxHp: 10,
         curHp: 10,
         mainAbilities: [
-          AbilityModel(
+          Ability(
             name: 'Defend',
             description: '',
             icon: Icons.account_circle,
             value: 1,
             type: 0
           ),
-          AbilityModel(
+          Ability(
             name: 'Heal',
             description: '',
             icon: Icons.add,
             value: 2,
             type: 0
           ),
-          AbilityModel(
+          Ability(
             name: 'Attack',
             description: '',
             icon: Icons.edit,
             value: 3,
             type: 0
           ),
-          AbilityModel(
+          Ability(
             name: 'Attack All',
             description: '',
             icon: Icons.wifi,
             value: 4,
             type: 0
           ),
-          AbilityModel(
+          Ability(
             name: 'Range',
             description: '',
             icon: Icons.account_circle,
@@ -59,7 +59,7 @@ class CreatureProvider extends ChangeNotifier {
           ),
         ],
         specialAbilities: [
-          AbilityModel(
+          Ability(
               name: 'Knockback',
               description: '',
               icon: Icons.pause,
@@ -69,7 +69,7 @@ class CreatureProvider extends ChangeNotifier {
         ],
         statusAilments: []
       ),
-      CreatureModel(
+      Creature(
           image: 'images/test.jpg',
           name: 'Creature 2',
           description: 'Creature 2 description',
@@ -77,35 +77,35 @@ class CreatureProvider extends ChangeNotifier {
           maxHp: 10,
           curHp: 8,
           mainAbilities: [
-            AbilityModel(
+            Ability(
                 name: 'Defend',
                 description: '',
                 icon: Icons.account_circle,
                 value: 1,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Heal',
                 description: '',
                 icon: Icons.add,
                 value: 2,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Attack',
                 description: '',
                 icon: Icons.edit,
                 value: 3,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Attack All',
                 description: '',
                 icon: Icons.wifi,
                 value: 4,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Range',
                 description: '',
                 icon: Icons.account_circle,
@@ -114,14 +114,14 @@ class CreatureProvider extends ChangeNotifier {
             ),
           ],
           specialAbilities: [
-            AbilityModel(
+            Ability(
                 name: 'Knockback',
                 description: '',
                 icon: Icons.pause,
                 value: 1,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Tracking',
                 description: '',
                 icon: Icons.account_balance_wallet,
@@ -131,7 +131,7 @@ class CreatureProvider extends ChangeNotifier {
           ],
           statusAilments: []
       ),
-      CreatureModel(
+      Creature(
           image: 'images/test.jpg',
           name: 'Creature 3',
           description: 'Creature 3 description',
@@ -139,35 +139,35 @@ class CreatureProvider extends ChangeNotifier {
           maxHp: 10,
           curHp: 4,
           mainAbilities: [
-            AbilityModel(
+            Ability(
                 name: 'Defend',
                 description: '',
                 icon: Icons.account_circle,
                 value: 1,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Heal',
                 description: '',
                 icon: Icons.add,
                 value: 2,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Attack',
                 description: '',
                 icon: Icons.edit,
                 value: 3,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Attack All',
                 description: '',
                 icon: Icons.wifi,
                 value: 4,
                 type: 0
             ),
-            AbilityModel(
+            Ability(
                 name: 'Range',
                 description: '',
                 icon: Icons.account_circle,
@@ -177,7 +177,7 @@ class CreatureProvider extends ChangeNotifier {
           ],
           specialAbilities: [],
           statusAilments: [
-            StatusAilmentModel(
+            StatusAilment(
               name: 'Poison',
               icon: Icons.cloud,
               value: 2,
