@@ -25,12 +25,25 @@ class TutorialPage extends StatelessWidget {
     for(int x=0 ; x<tutorialList.length ; x++) {
       tempWidgetList.add(Consumer<TutorialProvider>(
         builder: (context, provider, child) {
-          return CheckboxListTile(
+          return ListTile(
+            leading: Checkbox(
+              value: tutorialList[x].isComplete,
+              onChanged: (bool value) {
+                tutorialList[x].isComplete = value;
+                provider.updateTutorial(tutorialList[x]);
+              },
+            ),
             title: Text(tutorialList[x].title),
-            value: tutorialList[x].isComplete,
-            onChanged: (bool value) {
-              tutorialList[x].isComplete = value;
+            onTap: () {
+              // complete the tutorial
+              tutorialList[x].isComplete = true;
               provider.updateTutorial(tutorialList[x]);
+
+              // show completed message
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('Finished ${tutorialList[x].title}'),
+                duration: Duration(seconds: 1)
+              ));
             },
           );
         },
