@@ -1,8 +1,8 @@
-import 'package:coka/models/StatusAilmentModel.dart';
+import 'package:coka/models/StatusAilment.dart';
 import 'package:flutter/material.dart';
 
 class StatusAilmentWidget extends StatelessWidget {
-  final List<StatusAilmentModel> statusAilments;
+  final List<StatusAilment> statusAilments;
 
   StatusAilmentWidget({ this.statusAilments });
 

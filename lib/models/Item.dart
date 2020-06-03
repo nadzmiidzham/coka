@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class ItemModel {
+class Item {
   String name;
   int type;
   IconData icon;
 
-  ItemModel({
+  Item({
     this.name,
     this.type,
     this.icon,

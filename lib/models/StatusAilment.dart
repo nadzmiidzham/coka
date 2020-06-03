@@ -1,15 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class AbilityModel {
+class StatusAilment {
   String name;
-  int type;
   String description;
   int value;
   IconData icon;
 
-  AbilityModel({
+  StatusAilment({
     this.name,
-    this.type,
     this.description,
     this.value,
     this.icon

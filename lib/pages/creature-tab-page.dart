@@ -1,10 +1,10 @@
-import 'package:coka/models/CreatureModel.dart';
+import 'package:coka/models/Creature.dart';
 import 'package:coka/providers/creature-provider.dart';
 import 'package:coka/widgets/creature-stat-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CreaturePage extends StatelessWidget {
+class CreatureTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +18,7 @@ class CreaturePage extends StatelessWidget {
     );
   }
 
-  List<Widget> _creatureList(List<CreatureModel> creaturelist) {
+  List<Widget> _creatureList(List<Creature> creaturelist) {
     List<CreatureStatWidget> creatureStatWidgetList = [];
 
     if(creaturelist != null) {
