@@ -1,5 +1,5 @@
-import 'package:coka/models/Player.dart';
-import 'package:coka/models/Worker.dart';
+import 'package:coka/models/PlayerModel.dart';
+import 'package:coka/models/WorkerModel.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
 import 'package:coka/widgets/stat/hp-widget.dart';
@@ -9,7 +9,7 @@ import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
 class PlayerStatWidget extends StatelessWidget {
-  final Player player;
+  final PlayerModel player;
   final bool isSummary;
 
   PlayerStatWidget({ this.player, this.isSummary=false });
@@ -84,7 +84,7 @@ class PlayerStatWidget extends StatelessWidget {
     );
   }
 
-  Widget _workerItemWidget(Worker worker) {
+  Widget _workerItemWidget(WorkerModel worker) {
     List<Icon> itemList = [];
     Widget itemWidget = SizedBox.shrink();
 

@@ -1,20 +1,20 @@
-import 'package:coka/models/Ability.dart';
-import 'package:coka/models/StatusAilment.dart';
-import 'package:coka/models/Worker.dart';
+import 'package:coka/models/AbilityModel.dart';
+import 'package:coka/models/StatusAilmentModel.dart';
+import 'package:coka/models/WorkerModel.dart';
 import 'package:flutter/cupertino.dart';
 
-class Player {
+class PlayerModel {
   String name;
   int level;
   int maxHp, curHp;
   String image;
   String description;
-  List<Ability> abilities;
-  List<Ability> workerAbilities;
-  List<StatusAilment> statusAilments;
-  List<Worker> workers;
+  List<AbilityModel> abilities;
+  List<AbilityModel> workerAbilities;
+  List<StatusAilmentModel> statusAilments;
+  List<WorkerModel> workers;
 
-  Player({
+  PlayerModel({
     this.name,
     this.level,
     this.maxHp,
