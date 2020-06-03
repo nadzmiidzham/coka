@@ -29,6 +29,7 @@ class TutorialPage extends StatelessWidget {
             leading: Checkbox(
               value: tutorialList[x].isComplete,
               onChanged: (bool value) {
+                // manually complete tutorial
                 tutorialList[x].isComplete = value;
                 provider.updateTutorial(tutorialList[x]);
               },
