@@ -1,6 +1,5 @@
 import 'package:coka/models/Ability.dart';
 import 'package:coka/models/StatusAilment.dart';
-import 'package:flutter/cupertino.dart';
 
 class Creature {
   String image;
