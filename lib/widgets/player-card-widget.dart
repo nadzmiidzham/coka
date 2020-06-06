@@ -8,11 +8,11 @@ import 'package:coka/widgets/stat/profile-name-widget.dart';
 import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
-class PlayerStatWidget extends StatelessWidget {
+class PlayerCardWidget extends StatelessWidget {
   final Player player;
   final bool isSummary;
 
-  PlayerStatWidget({ this.player, this.isSummary=false });
+  PlayerCardWidget({ this.player, this.isSummary=false });
   
   @override
   Widget build(BuildContext context) {

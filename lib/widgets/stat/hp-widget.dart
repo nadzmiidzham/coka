@@ -1,7 +1,5 @@
-import 'package:coka/providers/player-provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 
 class HPWidget extends StatelessWidget {
   final int maxHp, curHp;

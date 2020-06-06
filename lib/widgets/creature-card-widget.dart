@@ -8,11 +8,11 @@ import 'package:coka/widgets/stat/profile-name-widget.dart';
 import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 
-class CreatureStatWidget extends StatelessWidget {
+class CreatureCardWidget extends StatelessWidget {
   final bool isSummary;
   final Creature creature;
 
-  CreatureStatWidget({ this.isSummary=false, this.creature });
+  CreatureCardWidget({ this.isSummary=false, this.creature });
 
   @override
   Widget build(BuildContext context) {
