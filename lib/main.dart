@@ -2,7 +2,9 @@ import 'package:coka/pages/about-page.dart';
 import 'package:coka/pages/home-page.dart';
 import 'package:coka/pages/tutorial-page.dart';
 import 'package:coka/providers/creature-provider.dart';
+import 'package:coka/providers/game-provider.dart';
 import 'package:coka/providers/player-provider.dart';
+import 'package:coka/providers/story-provider.dart';
 import 'package:coka/providers/tutorial-provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,9 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => PlayerProvider()),
-        ChangeNotifierProvider(create: (_) => CreatureProvider()),
         ChangeNotifierProvider(create: (_) => TutorialProvider()),
+        ChangeNotifierProvider(create: (_) => GameProvider(
+          playerProvider: PlayerProvider(),
+          creatureProvider: CreatureProvider(),
+          storyProvider: StoryProvider()
+        )),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
