@@ -13,12 +13,10 @@ class Scenario {
   String setupImagePath;
   bool isCompleted;
 
-  // scenario tracker
   int hope;
   int morale;
   ScenarioTime time;
 
-  // scenario stat
   int xp;
   int stat;
   int skill;

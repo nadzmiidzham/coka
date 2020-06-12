@@ -1,20 +1,22 @@
 import 'package:coka/models/Scenario.dart';
 
-enum StoryType {
-  STORY,
-  SCENARIO
+enum StoryState {
+  SETUP,
+  INITIALIZED,
+  START_ROUND,
+  END_ROUND
 }
 
 class Story {
   String title;
-  StoryType type;
+  String imagePath;
+  StoryState state;
   List<Scenario> scenarioList;
-  String imagepath;
 
   Story({
+    this.state,
     this.title,
-    this.type,
-    this.scenarioList,
-    this.imagepath
+    this.imagePath,
+    this.scenarioList
   });
 }

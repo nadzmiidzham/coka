@@ -1,6 +1,6 @@
 import 'package:coka/pages/creature-tab-page.dart';
 import 'package:coka/pages/player-tab-page.dart';
-import 'package:coka/pages/story-tab-page.dart';
+import 'package:coka/pages/story-page/story-tab-page.dart';
 import 'package:coka/widgets/menu_drawer/main-menu-drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

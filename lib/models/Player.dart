@@ -1,28 +1,28 @@
 import 'package:coka/models/Ability.dart';
-import 'package:coka/models/StatusAilment.dart';
+import 'package:coka/models/StatusImpairment.dart';
 import 'package:coka/models/Worker.dart';
 
 class Player {
   String name;
+  String image;
   int level;
   int maxHp, curHp;
-  String image;
   String description;
-  List<Ability> abilities;
-  List<Ability> workerAbilities;
-  List<StatusAilment> statusAilments;
-  List<Worker> workers;
+  List<Ability> abilityList;
+  List<Ability> workerAbilityList;
+  List<StatusImpairment> statusImpairmentList;
+  List<Worker> workerList;
 
   Player({
     this.name,
     this.level,
     this.maxHp,
     this.curHp,
-    this.abilities,
-    this.workerAbilities,
+    this.abilityList,
+    this.workerAbilityList,
     this.image,
     this.description,
-    this.statusAilments,
-    this.workers,
+    this.statusImpairmentList,
+    this.workerList,
   });
 }

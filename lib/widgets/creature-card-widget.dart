@@ -29,7 +29,7 @@ class CreatureCardWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: StatusAilmentWidget(statusAilments: creature.statusAilments,),
+                child: StatusAilmentWidget(statusAilments: creature.statusImpairmentList,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
@@ -37,11 +37,11 @@ class CreatureCardWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
-                child: AbilityWidget(abilities: creature.mainAbilities,),
+                child: AbilityWidget(abilities: creature.mainAbilityList,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
-                child: _creatureSpecialAbilityWidgetList(creature.specialAbilities),
+                child: _creatureSpecialAbilityWidgetList(creature.specialAbilityList),
               ),
               (isSummary)? SizedBox.shrink() : Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),

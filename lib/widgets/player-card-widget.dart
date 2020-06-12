@@ -7,6 +7,7 @@ import 'package:coka/widgets/stat/profile-image-widget.dart';
 import 'package:coka/widgets/stat/profile-name-widget.dart';
 import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class PlayerCardWidget extends StatelessWidget {
   final Player player;
@@ -39,7 +40,7 @@ class PlayerCardWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: StatusAilmentWidget(statusAilments: player.statusAilments,),
+          child: StatusAilmentWidget(statusAilments: player.statusImpairmentList,),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
@@ -47,7 +48,7 @@ class PlayerCardWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: AbilityWidget(abilities: player.abilities,),
+          child: AbilityWidget(abilities: player.abilityList),
         ),
         (isSummary)? SizedBox.shrink() : Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
@@ -66,19 +67,19 @@ class PlayerCardWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: AbilityWidget(abilities: player.workerAbilities,),
+          child: AbilityWidget(abilities: player.workerAbilityList),
         ),
 
         // worker 1 item list
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
-          child: _workerItemWidget(player.workers[0]),
+          child: _workerItemWidget(player.workerList[0]),
         ),
 
         // worker 2 item list
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
-          child: _workerItemWidget(player.workers[1]),
+          child: _workerItemWidget(player.workerList[1]),
         ),
       ],
     );
@@ -88,9 +89,9 @@ class PlayerCardWidget extends StatelessWidget {
     List<Icon> itemList = [];
     Widget itemWidget = SizedBox.shrink();
 
-    if(worker.items != null) {
-      for(int x=0 ; x<worker.items.length ; x++) {
-        itemList.add(Icon(worker.items[x].icon));
+    if(worker.itemList != null) {
+      for(int x=0 ; x<worker.itemList.length ; x++) {
+        itemList.add(Icon(worker.itemList[x].icon));
       }
     }
 
@@ -110,7 +111,7 @@ class PlayerCardWidget extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 5),
-          child: Icon(worker.icon),
+          child: Image.asset(worker.iconPath),
         ),
         itemWidget
       ],
