@@ -65,6 +65,12 @@ class PlayerBuilder {
     return this;
   }
 
+  PlayerBuilder setHP(int hp) {
+    this._maxHp = hp;
+    this._curHp = hp;
+    return this;
+  }
+
   PlayerBuilder setDescription(String description) {
     this._description = description;
     return this;
