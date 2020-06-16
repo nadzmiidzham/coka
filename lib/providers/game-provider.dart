@@ -131,15 +131,14 @@ class GameProvider extends ChangeNotifier {
   }
 
   // player methods
-  randomizePlayer() {
+  randomizePlayer(String name, String imagePath, String description) {
     // TODO: find a way on how to randomize player
     return this._playerBuilder.reset()
-        .setName('')
-        .setImagePath('')
-        .setDescription('')
+        .setName(name)
+        .setImagePath(imagePath)
+        .setDescription(description)
+        .setColor(PlayerColor.GREEN)
         .setAbilityList([])
-        .setWorkerList([])
-        .setWorkerAbilityList([])
         .build();
   }
 
@@ -148,6 +147,7 @@ class GameProvider extends ChangeNotifier {
         .setName(player.name)
         .setImagePath(player.imagePath)
         .setDescription(player.description)
+        .setColor(player.color)
         .setAbilityList(player.abilityList)
         .setWorkerList(player.workerList)
         .setWorkerAbilityList(player.workerAbilityList)

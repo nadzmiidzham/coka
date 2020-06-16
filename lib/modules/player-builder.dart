@@ -9,6 +9,7 @@ class PlayerBuilder {
   int _level;
   int _maxHp, _curHp;
   String _description;
+  PlayerColor _color;
   List<Ability> _abilityList;
   List<Ability> _workerAbilityList;
   List<StatusImpairment> _statusImpairmentList;
@@ -28,8 +29,39 @@ class PlayerBuilder {
     this._maxHp = 5;
     this._description = '';
     this._abilityList = [];
-    this._workerList = [];
-    this._workerAbilityList = [];
+    this._workerList = [
+      Worker(
+        iconPath: '',
+        itemList: []
+      ),
+      Worker(
+        iconPath: '',
+        itemList: []
+      )
+    ];
+    this._workerAbilityList = [
+      Ability(
+        iconPath: '',
+        name: 'MOVE',
+        description: '',
+        value: 1,
+        type: 0
+      ),
+      Ability(
+        iconPath: '',
+        name: 'GATHER',
+        description: '',
+        value: 1,
+        type: 0
+      ),
+      Ability(
+        iconPath: '',
+        name: 'SCAVENGE',
+        description: '',
+        value: 1,
+        type: 0
+      )
+    ];
     this._statusImpairmentList = [];
 
     return this;
@@ -73,6 +105,11 @@ class PlayerBuilder {
 
   PlayerBuilder setDescription(String description) {
     this._description = description;
+    return this;
+  }
+
+  PlayerBuilder setColor(PlayerColor color) {
+    this._color = color;
     return this;
   }
 
