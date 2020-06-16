@@ -110,6 +110,11 @@ class PlayerBuilder {
     return this;
   }
 
+  PlayerBuilder setPlayerList(List<Player> playerList) {
+    this._playerList = playerList;
+    return this;
+  }
+
   PlayerBuilder addPlayer(Player player) {
     this._playerList.add(player);
     return this;
