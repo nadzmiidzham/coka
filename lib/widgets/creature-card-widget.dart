@@ -75,7 +75,7 @@ class CreatureCardWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(specialAbility.icon),
+            Image.asset(specialAbility.iconPath),
             Text(specialAbility.name)
           ],
         ),

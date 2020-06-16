@@ -31,7 +31,7 @@ class AbilityWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(ability.icon),
+              Image.asset(ability.iconPath),
               Text(ability.value.toString())
             ],
           ),

@@ -86,12 +86,12 @@ class PlayerCardWidget extends StatelessWidget {
   }
 
   Widget _workerItemWidget(Worker worker) {
-    List<Icon> itemList = [];
+    List<Image> itemList = [];
     Widget itemWidget = SizedBox.shrink();
 
     if(worker.itemList != null) {
       for(int x=0 ; x<worker.itemList.length ; x++) {
-        itemList.add(Icon(worker.itemList[x].icon));
+        itemList.add(Image.asset(worker.itemList[x].iconPath));
       }
     }
 
