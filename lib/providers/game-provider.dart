@@ -5,12 +5,14 @@ import 'package:coka/models/Player.dart';
 import 'package:coka/models/Scenario.dart';
 import 'package:coka/models/Story.dart';
 import 'package:coka/modules/game-builder.dart';
+import 'package:coka/modules/player-builder.dart';
 import 'package:coka/modules/story-builder.dart';
 import 'package:flutter/material.dart';
 
 class GameProvider extends ChangeNotifier {
-  StoryBuilder _storyBuilder;
   GameBuilder _gameBuilder;
+  StoryBuilder _storyBuilder;
+  PlayerBuilder _playerBuilder;
   List<Story> storyList;
   Game game;
 
@@ -23,9 +25,11 @@ class GameProvider extends ChangeNotifier {
   initProvider() {
     this._gameBuilder = GameBuilder();
     this._storyBuilder = StoryBuilder();
+    this._playerBuilder = PlayerBuilder();
 
     this.game = this._gameBuilder.reset().build();
     this.game.story = this._storyBuilder.reset().build();
+    this.game.playerList = [];
   }
 
   initStory() {
@@ -127,8 +131,27 @@ class GameProvider extends ChangeNotifier {
   }
 
   // player methods
-  addPlayer(Player player) {
-    this._gameBuilder.addPlayer(player);
+  randomizePlayer() {
+    // TODO: find a way on how to randomize player
+    return this._playerBuilder.reset()
+        .setName('')
+        .setImagePath('')
+        .setDescription('')
+        .setAbilityList([])
+        .setWorkerList([])
+        .setWorkerAbilityList([])
+        .build();
+  }
+
+  selectPlayer(Player player) {
+    this._playerBuilder.reset()
+        .setName(player.name)
+        .setImagePath(player.imagePath)
+        .setDescription(player.description)
+        .setAbilityList(player.abilityList)
+        .setWorkerList(player.workerList)
+        .setWorkerAbilityList(player.workerAbilityList)
+        .save();
     notifyListeners();
   }
 
@@ -143,6 +166,7 @@ class GameProvider extends ChangeNotifier {
     this.game = this._gameBuilder
         .setState(GameState.RUN)
         .setStartTime()
+        .setPlayerList(this._playerBuilder.buildList())
         .build();
     notifyListeners();
   }
