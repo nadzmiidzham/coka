@@ -13,6 +13,7 @@ class Game {
   GameState state;
   GameTime time;
   Story story;
+  int maxPlayer;
   List<Player> playerList;
   List<Creature> creatureList;
 
@@ -20,6 +21,7 @@ class Game {
     this.state,
     this.time,
     this.story,
+    this.maxPlayer,
     this.playerList,
     this.creatureList
   });

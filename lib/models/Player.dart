@@ -4,7 +4,7 @@ import 'package:coka/models/Worker.dart';
 
 class Player {
   String name;
-  String image;
+  String imagePath;
   int level;
   int maxHp, curHp;
   String description;
@@ -20,7 +20,7 @@ class Player {
     this.curHp,
     this.abilityList,
     this.workerAbilityList,
-    this.image,
+    this.imagePath,
     this.description,
     this.statusImpairmentList,
     this.workerList,
