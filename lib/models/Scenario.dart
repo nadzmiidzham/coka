@@ -1,11 +1,4 @@
-enum ScenarioTime{
-  MIDNIGHT,
-  EARLY_MORNING,
-  LATE_MORNING,
-  MIDDAY,
-  AFTERNOON,
-  EVENING
-}
+import 'package:coka/models/GameTime.dart';
 
 class Scenario {
   String title;
@@ -15,7 +8,7 @@ class Scenario {
 
   int hope;
   int morale;
-  ScenarioTime time;
+  GameTime time;
 
   int xp;
   int stat;

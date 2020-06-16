@@ -1,6 +1,7 @@
+import 'package:coka/models/Game.dart';
 import 'package:coka/models/Scenario.dart';
 import 'package:coka/models/Story.dart';
-import 'package:coka/providers/story-provider.dart';
+import 'package:coka/providers/game-provider.dart';
 import 'package:coka/widgets/story/scenario-card-widget.dart';
 import 'package:coka/widgets/story/story-card-widget.dart';
 import 'package:coka/widgets/story/story-progress-card-widget.dart';
@@ -12,42 +13,43 @@ class StoryTabPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Consumer<StoryProvider>(
+        child: Consumer<GameProvider>(
           builder: (context, provider, child) {
-            switch(provider.activeStory.state) {
-              case StoryState.SETUP:
-                return _showStoryList(provider.storyList);
-                break;
-              case StoryState.INITIALIZED:
-                return _showSelectedStoryScenarioList(provider.activeStory);
-                break;
-              case StoryState.START_ROUND:
-                return _showStoryProgress(provider.activeStory);
-                break;
-              case StoryState.END_ROUND:
-                return _showStoryReport();
-                break;
+            if(provider.game.state == GameState.END) {
+              return _showStoryReport();
             }
 
-            return _showStoryList(provider.storyList);
+            switch(provider.game.story.state) {
+              case StoryState.SETUP:
+                return _showStoryList(context, provider.storyList);
+                break;
+              case StoryState.INITIALIZED:
+                return _showSelectedStoryScenarioList(provider.game.story);
+                break;
+              case StoryState.RUN_ROUND:
+                return _showStoryProgress(provider.game.story);
+                break;
+              case StoryState.END_ROUND:
+                return _showStoryEndTurn();
+                break;
+              default:
+                return _showStoryList(context, provider.storyList);
+                break;
+            }
           },
         ),
       ),
     );
   }
 
-  Widget _showStoryList(List<Story> storyList) {
+  Widget _showStoryList(BuildContext context, List<Story> storyList) {
     List<Widget> storyListWidget = [];
 
     for(int x=0 ; x<storyList.length ; x++) {
-      storyListWidget.add(Consumer<StoryProvider>(
-        builder: (context, provider, child) {
-          return StoryCardWidget(
-            story: storyList[x],
-            callback: () {
-              Navigator.pushNamed(context, '/setup-story', arguments: { 'story': storyList[x] });
-            },
-          );
+      storyListWidget.add(StoryCardWidget(
+        story: storyList[x],
+        callback: () {
+          Navigator.pushNamed(context, '/setup-story', arguments: { 'story': storyList[x] });
         },
       ));
     }
@@ -61,20 +63,15 @@ class StoryTabPage extends StatelessWidget {
     List<Widget> tempWidgetList = [];
 
     for(int x=0 ; x<selectedStory.scenarioList.length ; x++) {
-      tempWidgetList.add(Selector<StoryProvider, List<Scenario>>(
-        selector: (context, provider) => provider.activeStory.scenarioList,
-        builder: (context, scenarioList, child) {
-          return ScenarioCardWidget(
-              storyImagePath: selectedStory.imagePath,
-              scenario: scenarioList[x]
-          );
-        },
+      tempWidgetList.add(ScenarioCardWidget(
+          storyImagePath: selectedStory.imagePath,
+          scenario: selectedStory.scenarioList[x]
       ));
     }
 
     tempWidgetList.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Consumer<StoryProvider>(
+      child: Consumer<GameProvider>(
         builder: (context, provider, child) {
           return RaisedButton(
             child: Text('Choose Another Story'),
@@ -88,9 +85,16 @@ class StoryTabPage extends StatelessWidget {
 
     tempWidgetList.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: RaisedButton(
-        child: Text('Start Game'),
-        onPressed: () {},
+      child: Consumer<GameProvider>(
+        builder: (context, provider, child) {
+          return RaisedButton(
+            child: Text('Start Game'),
+            onPressed: () {
+              provider.startGame();
+              provider.startRound();
+            },
+          );
+        },
       ),
     ));
 
@@ -105,8 +109,8 @@ class StoryTabPage extends StatelessWidget {
     tempWidgetList.add(StoryProgressCardWidget());
 
     for(int x=0 ; x<story.scenarioList.length ; x++) {
-      tempWidgetList.add(Selector<StoryProvider, Story>(
-        selector: (context, provider) => provider.activeStory,
+      tempWidgetList.add(Selector<GameProvider, Story>(
+        selector: (context, provider) => provider.game.story,
         builder: (context, story, child) {
           return ScenarioCardWidget(
               storyImagePath: story.imagePath,
@@ -119,11 +123,13 @@ class StoryTabPage extends StatelessWidget {
     tempWidgetList.add(Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       width: double.infinity,
-      child: Consumer<StoryProvider>(
+      child: Consumer<GameProvider>(
         builder: (context, provider, child) {
           return RaisedButton(
             child: Text('END GAME'),
-            onPressed: () {},
+            onPressed: () {
+              provider.endGame();
+            },
           );
         },
       ),
@@ -132,6 +138,10 @@ class StoryTabPage extends StatelessWidget {
     return ListView(
       children: tempWidgetList,
     );
+  }
+
+  Widget _showStoryEndTurn() {
+    return SizedBox.shrink();
   }
 
   Widget _showStoryReport() {

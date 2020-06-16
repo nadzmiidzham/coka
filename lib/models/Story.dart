@@ -3,7 +3,7 @@ import 'package:coka/models/Scenario.dart';
 enum StoryState {
   SETUP,
   INITIALIZED,
-  START_ROUND,
+  RUN_ROUND,
   END_ROUND
 }
 

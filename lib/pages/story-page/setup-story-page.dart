@@ -1,5 +1,5 @@
 import 'package:coka/models/Story.dart';
-import 'package:coka/providers/story-provider.dart';
+import 'package:coka/providers/game-provider.dart';
 import 'package:coka/widgets/story/scenario-card-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,12 +34,12 @@ class SetupStoryPage extends StatelessWidget {
     
     tempWidgetList.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: Consumer<StoryProvider>(
+      child: Consumer<GameProvider>(
         builder: (context, provider, child) {
           return RaisedButton(
             child: Text('Choose Story'),
             onPressed: () {
-              provider.selectStory(selectedStory);
+              provider.setStory(selectedStory);
               Navigator.pop(context);
             },
           );
