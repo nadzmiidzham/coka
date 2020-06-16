@@ -8,13 +8,19 @@ class GameBuilder {
   GameState _state;
   GameTime _time;
   Story _story;
+  int _maxPlayer;
   List<Player> _playerList;
   List<Creature> _creatureList;
+
+  GameBuilder() {
+    this.reset();
+  }
 
   GameBuilder reset() {
     this._state = GameState.INITIALIZE;
     this._time = new GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning');
     this._story = new Story();
+    this._maxPlayer = 4;
     this._playerList = [];
     this._creatureList = [];
     return this;
@@ -40,8 +46,15 @@ class GameBuilder {
     return this;
   }
 
+  GameBuilder setMaxPlayer(int maxPlayer) {
+    this._maxPlayer = maxPlayer;
+    return this;
+  }
+
   GameBuilder setPlayerList(List<Player> playerList) {
-    this._playerList = playerList;
+    for(int x=0 ; x<this._maxPlayer ; x++) {
+      this._playerList.add(playerList[x]);
+    }
     return this;
   }
 
@@ -65,6 +78,7 @@ class GameBuilder {
       state: this._state,
       time: this._time,
       story: this._story,
+      maxPlayer: this._maxPlayer,
       playerList: this._playerList,
       creatureList: this._creatureList
     );
