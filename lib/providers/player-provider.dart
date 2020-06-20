@@ -49,14 +49,16 @@ class PlayerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  randomizePlayer(String name, String imagePath, String description) {
-    return this._playerBuilder.reset()
-        .setName(name)
-        .setImagePath(imagePath)
-        .setDescription(description)
+  randomizePlayer() {
+    Player player = this._playerBuilder.build();
+
+    this._playerBuilder.reset()
+        .setName(player.name)
+        .setImagePath(player.imagePath)
+        .setDescription(player.description)
         .setColor(this._randomPlayerColor())
-        .setAbilityList(this._randomPlayerAbility())
-        .build();
+        .setAbilityList(this._randomPlayerAbility());
+    notifyListeners();
   }
 
   PlayerColor _randomPlayerColor() {
@@ -89,10 +91,10 @@ class PlayerProvider extends ChangeNotifier {
 
     for(int x=0 ; x<abilityList.length ; x++) {
       abilityList.add(Ability(
-          name: 'Ability ${x + 1}',
+          name: 'Ability ${x * 10}',
           type: x,
-          value: (x + 1),
-          description: 'This is ability ${x + 1}',
+          value: (x * 1),
+          description: 'This is ability ${x * 10}',
           iconPath: ''
       ));
     }

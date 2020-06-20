@@ -30,15 +30,12 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
               !this._isRandomize? SizedBox.shrink() : Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 width: double.infinity,
-                child: Consumer2<GameProvider, PlayerProvider>(
-                  builder: (context, gameProvider, playerProvider, child) {
+                child: Consumer<PlayerProvider>(
+                  builder: (context, provider, child) {
                     return RaisedButton(
                       child: Text('Randomize'),
                       onPressed: () {
-                        gameProvider.randomizePlayer(
-                          playerProvider.player.name,
-                          playerProvider.player.imagePath,
-                          playerProvider.player.description);
+                        provider.randomizePlayer();
                       },
                     );
                   },
