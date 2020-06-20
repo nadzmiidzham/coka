@@ -1,5 +1,4 @@
 import 'package:coka/models/Game.dart';
-import 'package:coka/models/Scenario.dart';
 import 'package:coka/models/Story.dart';
 import 'package:coka/providers/game-provider.dart';
 import 'package:coka/widgets/story/scenario-card-widget.dart';

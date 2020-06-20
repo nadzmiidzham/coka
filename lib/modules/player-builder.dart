@@ -42,24 +42,39 @@ class PlayerBuilder {
     this._description = '';
     this._abilityList = [
       Ability(
-          name: 'Ability 1',
-          value: 1
+        iconPath: 'images/test.jpg',
+        name: 'Ability 1',
+        value: 1,
+        type: 0,
+        description: ''
       ),
       Ability(
-          name: 'Ability 2',
-          value: 1
+        iconPath: 'images/test.jpg',
+        name: 'Ability 2',
+        value: 1,
+        type: 0,
+        description: ''
       ),
       Ability(
-          name: 'Ability 3',
-          value: 1
+        iconPath: 'images/test.jpg',
+        name: 'Ability 3',
+        value: 1,
+        type: 0,
+        description: ''
       ),
       Ability(
-          name: 'Ability 4',
-          value: 1
+        iconPath: 'images/test.jpg',
+        name: 'Ability 4',
+        value: 1,
+        type: 0,
+        description: ''
       ),
       Ability(
-          name: 'Ability 5',
-          value: 1
+        iconPath: 'images/test.jpg',
+        name: 'Ability 5',
+        value: 1,
+        type: 0,
+        description: ''
       )
     ];
     this._workerList = [
@@ -74,21 +89,21 @@ class PlayerBuilder {
     ];
     this._workerAbilityList = [
       Ability(
-        iconPath: '',
+        iconPath: 'images/test.jpg',
         name: 'MOVE',
         description: '',
         value: 1,
         type: 0
       ),
       Ability(
-        iconPath: '',
+        iconPath: 'images/test.jpg',
         name: 'GATHER',
         description: '',
         value: 1,
         type: 0
       ),
       Ability(
-        iconPath: '',
+        iconPath: 'images/test.jpg',
         name: 'SCAVENGE',
         description: '',
         value: 1,

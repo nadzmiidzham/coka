@@ -9,12 +9,28 @@ import 'package:coka/widgets/stat/status-ailment-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class PlayerCardWidget extends StatelessWidget {
+class PlayerCardWidget extends StatefulWidget {
   final Player player;
   final bool isSummary;
 
-  PlayerCardWidget({ this.player, this.isSummary=false });
-  
+  PlayerCardWidget({
+    this.player,
+    this.isSummary=false
+  });
+
+  @override
+  _PlayerCardWidgetState createState() => _PlayerCardWidgetState(player: this.player, isSummary: this.isSummary);
+}
+
+class _PlayerCardWidgetState extends State<PlayerCardWidget> {
+  Player player;
+  bool isSummary;
+
+  _PlayerCardWidgetState({
+    this.player,
+    this.isSummary=false
+  });
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,7 +38,15 @@ class PlayerCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: Column(
           children: <Widget>[
-            _playerStatWidget(), // player stat widgets
+            InkWell(
+              child: ProfileImageWidget(path: player.imagePath),
+              onTap: () {
+                setState(() {
+                  this.isSummary = !this.isSummary;
+                });
+              },
+            ),
+            isSummary? SizedBox.shrink() : _playerStatWidget(), // player stat widgets
             isSummary? SizedBox.shrink() : _workerStatWidget(), // worker stat widgets
           ],
         ),
@@ -33,7 +57,6 @@ class PlayerCardWidget extends StatelessWidget {
   Widget _playerStatWidget() {
     return Column(
       children: <Widget>[
-        ProfileImageWidget(path: player.image,),
         Padding(
           padding: const EdgeInsets.all(5),
           child: ProfileNameWidget(statType: StatType.player, name: player.name, value: player.level,),
@@ -50,7 +73,7 @@ class PlayerCardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           child: AbilityWidget(abilities: player.abilityList),
         ),
-        (isSummary)? SizedBox.shrink() : Padding(
+        isSummary? SizedBox.shrink() : Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
           child: DescriptionWidget(description: player.description,),
         ),
@@ -63,7 +86,7 @@ class PlayerCardWidget extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: Divider(color: Colors.black, thickness: 2,),
+          child: Divider(color: Colors.black, thickness: 2),
         ),
         Padding(
           padding: const EdgeInsets.all(5),
@@ -91,7 +114,9 @@ class PlayerCardWidget extends StatelessWidget {
 
     if(worker.itemList != null) {
       for(int x=0 ; x<worker.itemList.length ; x++) {
-        itemList.add(Image.asset(worker.itemList[x].iconPath));
+        itemList.add(Image(
+          image: AssetImage(worker.itemList[x].iconPath),
+        ));
       }
     }
 
@@ -111,7 +136,7 @@ class PlayerCardWidget extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 5),
-          child: Image.asset(worker.iconPath),
+          child: Image(image: AssetImage(worker.iconPath)),
         ),
         itemWidget
       ],

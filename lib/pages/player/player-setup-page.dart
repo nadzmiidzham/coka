@@ -1,3 +1,4 @@
+import 'package:coka/providers/game-provider.dart';
 import 'package:coka/providers/player-provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -54,12 +55,13 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 width: double.infinity,
-                child: Consumer<PlayerProvider>(
-                  builder: (context, provider, child) {
+                child: Consumer2<GameProvider, PlayerProvider>(
+                  builder: (context, gameProvider, playerProvider, child) {
                     return RaisedButton(
                       child: Text('Create Player'),
                       onPressed: () {
-                        provider.savePlayer();
+                        gameProvider.addPlayer(playerProvider.player);
+                        playerProvider.resetPlayer();
                         Navigator.pop(context);
                       },
                     );

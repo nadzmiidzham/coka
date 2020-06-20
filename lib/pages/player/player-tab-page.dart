@@ -1,4 +1,3 @@
-import 'package:coka/models/Game.dart';
 import 'package:coka/models/Player.dart';
 import 'package:coka/providers/game-provider.dart';
 import 'package:coka/widgets/player-card-widget.dart';
@@ -8,13 +7,15 @@ import 'package:provider/provider.dart';
 class PlayerTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Game game = Provider.of<GameProvider>(context, listen: false).game;
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Center(
-        child: ListView(
-          children: _playerCardWidgetList(game.maxPlayer, game.playerList),
+        child: Consumer<GameProvider>(
+          builder: (context, provider, child) {
+            return ListView(
+              children: _playerCardWidgetList(provider.game.maxPlayer, provider.game.playerList),
+            );
+          },
         ),
       ),
     );

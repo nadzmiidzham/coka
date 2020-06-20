@@ -11,6 +11,7 @@ class PlayerProvider extends ChangeNotifier {
   }
 
   Player get player { return this._playerBuilder.build(); }
+  List<Player> get playerList { return this._playerBuilder.buildList(); }
   Player get initialPlayerStat { return this._playerBuilder.reset().build(); }
 
   List<int> get initialLevelValueList {
@@ -33,19 +34,6 @@ class PlayerProvider extends ChangeNotifier {
 
   setPlayerAbility(int index, Ability ability) {
     this._playerBuilder.setAbility(index, ability);
-    notifyListeners();
-  }
-
-  addPlayer(Player player) {
-    this._playerBuilder.reset()
-        .setName(player.name)
-        .setImagePath(player.imagePath)
-        .setDescription(player.description)
-        .setColor(player.color)
-        .setAbilityList(player.abilityList)
-        .setWorkerList(player.workerList)
-        .setWorkerAbilityList(player.workerAbilityList)
-        .save();
     notifyListeners();
   }
 

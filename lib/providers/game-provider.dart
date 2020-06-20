@@ -5,14 +5,12 @@ import 'package:coka/models/Player.dart';
 import 'package:coka/models/Scenario.dart';
 import 'package:coka/models/Story.dart';
 import 'package:coka/modules/game-builder.dart';
-import 'package:coka/modules/player-builder.dart';
 import 'package:coka/modules/story-builder.dart';
 import 'package:flutter/material.dart';
 
 class GameProvider extends ChangeNotifier {
   GameBuilder _gameBuilder;
   StoryBuilder _storyBuilder;
-  PlayerBuilder _playerBuilder;
   List<Story> storyList;
   Game game;
 
@@ -25,7 +23,6 @@ class GameProvider extends ChangeNotifier {
   initProvider() {
     this._gameBuilder = GameBuilder();
     this._storyBuilder = StoryBuilder();
-    this._playerBuilder = PlayerBuilder();
 
     this.game = this._gameBuilder.reset().build();
     this.game.story = this._storyBuilder.reset().build();
@@ -131,27 +128,8 @@ class GameProvider extends ChangeNotifier {
   }
 
   // player methods
-  randomizePlayer(String name, String imagePath, String description) {
-    // TODO: find a way on how to randomize player
-    return this._playerBuilder.reset()
-        .setName(name)
-        .setImagePath(imagePath)
-        .setDescription(description)
-        .setColor(PlayerColor.GREEN)
-        .setAbilityList([])
-        .build();
-  }
-
-  selectPlayer(Player player) {
-    this._playerBuilder.reset()
-        .setName(player.name)
-        .setImagePath(player.imagePath)
-        .setDescription(player.description)
-        .setColor(player.color)
-        .setAbilityList(player.abilityList)
-        .setWorkerList(player.workerList)
-        .setWorkerAbilityList(player.workerAbilityList)
-        .save();
+  addPlayer(Player player) {
+    this.game = this._gameBuilder.addPlayer(player).build();
     notifyListeners();
   }
 
@@ -166,7 +144,6 @@ class GameProvider extends ChangeNotifier {
     this.game = this._gameBuilder
         .setState(GameState.RUN)
         .setStartTime()
-        .setPlayerList(this._playerBuilder.buildList())
         .build();
     notifyListeners();
   }
