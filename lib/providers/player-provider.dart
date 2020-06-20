@@ -21,6 +21,11 @@ class PlayerProvider extends ChangeNotifier {
     return [1, 2, 3, 4, 5];
   }
 
+  resetPlayer() {
+    this._playerBuilder.reset();
+    notifyListeners();
+  }
+
   setPlayerLevel(int level) {
     this._playerBuilder.setLevel(level);
     notifyListeners();

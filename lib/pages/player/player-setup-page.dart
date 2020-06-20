@@ -1,4 +1,3 @@
-import 'package:coka/providers/game-provider.dart';
 import 'package:coka/providers/player-provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +20,17 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Setup Player'),
+        leading: Consumer<PlayerProvider>(
+          builder: (context, provider, child) {
+            return IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                provider.resetPlayer();
+                Navigator.pop(context);
+              },
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -114,7 +124,53 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
   }
 
   Widget _randomizePlayerCard() {
-    return Card();
+    return Card(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Selector<PlayerProvider, String>(
+              selector: (context, provider) => provider.player.imagePath,
+              builder: (context, imagePath, child) {
+                return InkWell(
+                  child: Image(image: AssetImage(imagePath)),
+                  onTap: () {},
+                );
+              },
+            ),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Selector<PlayerProvider, String>(
+                selector: (context, provider) => provider.player.name,
+                builder: (context, playerName, child) {
+                  return _setNameWidget(playerName);
+                },
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Consumer<PlayerProvider>(
+                builder: (context, provider, child) {
+                  return _setLevelWidget(false, provider);
+                },
+              ),
+            ),
+            Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Consumer<PlayerProvider>(
+                  builder: (context, provider, child) {
+                    return _setAbilityWidget(false, provider);
+                  },
+                )
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _setNameWidget(String playerName) {
