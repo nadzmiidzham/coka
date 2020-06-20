@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Ability {
   String name;
   int type;

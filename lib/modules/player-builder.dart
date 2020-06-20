@@ -21,14 +21,47 @@ class PlayerBuilder {
     this.resetList();
   }
 
+  // getter
+  String get name { return this._name; }
+  String get imagePath { return this._imagePath; }
+  int get level { return this._level; }
+  int get hp { return this._maxHp; }
+  String get description { return this._description; }
+  PlayerColor get color { return this._color; }
+  List<Ability> get abilityList { return this._abilityList; }
+  List<Ability> get workerAbilityList { return this._workerAbilityList; }
+  List<StatusImpairment> get statusImpairmentList { return this._statusImpairmentList; }
+  List<Worker> get workerList { return this._workerList; }
+
   PlayerBuilder reset() {
     this._name = '';
-    this._imagePath = '';
+    this._imagePath = 'images/test.jpg';
     this._level = 1;
     this._curHp = 5;
     this._maxHp = 5;
     this._description = '';
-    this._abilityList = [];
+    this._abilityList = [
+      Ability(
+          name: 'Ability 1',
+          value: 1
+      ),
+      Ability(
+          name: 'Ability 2',
+          value: 1
+      ),
+      Ability(
+          name: 'Ability 3',
+          value: 1
+      ),
+      Ability(
+          name: 'Ability 4',
+          value: 1
+      ),
+      Ability(
+          name: 'Ability 5',
+          value: 1
+      )
+    ];
     this._workerList = [
       Worker(
         iconPath: '',
@@ -115,6 +148,11 @@ class PlayerBuilder {
 
   PlayerBuilder setAbilityList(List<Ability> abilityList) {
     this._abilityList = abilityList;
+    return this;
+  }
+
+  PlayerBuilder setAbility(int index, Ability ability) {
+    this._abilityList[index] = ability;
     return this;
   }
 
