@@ -37,7 +37,7 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
         child: Container(
           child: Column(
             children: <Widget>[
-              this._isRandomize? _randomizePlayerCard() : _selectPlayerCard(),
+              _playerCardWidget(),
               !this._isRandomize? SizedBox.shrink() : Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 width: double.infinity,
@@ -75,7 +75,7 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
     );
   }
 
-  Widget _selectPlayerCard() {
+  Widget _playerCardWidget() {
     return Card(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
@@ -106,7 +106,7 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Consumer<PlayerProvider>(
                 builder: (context, provider, child) {
-                  return _setLevelWidget(true, provider);
+                  return _setLevelWidget(!this._isRandomize, provider);
                 },
               ),
             ),
@@ -115,59 +115,9 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Consumer<PlayerProvider>(
                 builder: (context, provider, child) {
-                  return _setAbilityWidget(true, provider);
+                  return _setAbilityWidget(!this._isRandomize, provider);
                 },
               )
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _randomizePlayerCard() {
-    return Card(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Selector<PlayerProvider, String>(
-              selector: (context, provider) => provider.player.imagePath,
-              builder: (context, imagePath, child) {
-                return InkWell(
-                  child: Image(image: AssetImage(imagePath)),
-                  onTap: () {},
-                );
-              },
-            ),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Selector<PlayerProvider, String>(
-                selector: (context, provider) => provider.player.name,
-                builder: (context, playerName, child) {
-                  return _setNameWidget(playerName);
-                },
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Consumer<PlayerProvider>(
-                builder: (context, provider, child) {
-                  return _setLevelWidget(false, provider);
-                },
-              ),
-            ),
-            Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Consumer<PlayerProvider>(
-                  builder: (context, provider, child) {
-                    return _setAbilityWidget(false, provider);
-                  },
-                )
             )
           ],
         ),
@@ -188,7 +138,7 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
   Widget _setLevelWidget(bool isEditable, PlayerProvider provider) {
     return RaisedButton(
       child: Text('Level ${provider.player.level}'),
-      onPressed: () {
+      onPressed: !isEditable? null : () {
         showDialog(
             context: context,
             builder: (context) {
@@ -233,7 +183,7 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
                       for(int y=0 ; y<initialAbilityValueList.length ; y++) {
                         dialogWidgetList.add(SimpleDialogOption(
                           child: Text('${initialAbilityValueList[y]}'),
-                          onPressed: () {
+                          onPressed: !isEditable? null : () {
                             provider.player.abilityList[x].value = initialAbilityValueList[y];
                             provider.setPlayerAbility(x, provider.player.abilityList[x]);
                             Navigator.pop(context);
