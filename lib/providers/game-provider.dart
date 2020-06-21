@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 
 class GameProvider extends ChangeNotifier {
   GameBuilder _gameBuilder;
-  StoryBuilder _storyBuilder;
   List<Story> storyList;
   Game game;
 
@@ -22,10 +21,8 @@ class GameProvider extends ChangeNotifier {
   // init method
   initProvider() {
     this._gameBuilder = GameBuilder();
-    this._storyBuilder = StoryBuilder();
 
     this.game = this._gameBuilder.reset().build();
-    this.game.story = this._storyBuilder.reset().build();
     this.game.playerList = [];
   }
 
@@ -110,20 +107,8 @@ class GameProvider extends ChangeNotifier {
   }
 
   // story methods
-  setStory(Story story) {
-    Story selectedStory = this._storyBuilder.reset()
-        .setTitle(story.title)
-        .setImagePath(story.imagePath)
-        .setScenarioList(story.scenarioList)
-        .setState(StoryState.INITIALIZED)
-        .build();
-
-    this.game = this._gameBuilder.setStory(selectedStory).build();
-    notifyListeners();
-  }
-
-  cancelStory() {
-    this.game.story = this._storyBuilder.reset().build();
+  addStory(Story story) {
+    this.game = this._gameBuilder.setStory(story).build();
     notifyListeners();
   }
 
@@ -145,10 +130,6 @@ class GameProvider extends ChangeNotifier {
         .setState(GameState.RUN)
         .setStartTime()
         .build();
-    notifyListeners();
-  }
-
-  startRound() {
     this.game.story.state = StoryState.RUN_ROUND;
     notifyListeners();
   }

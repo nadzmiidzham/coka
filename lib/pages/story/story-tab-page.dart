@@ -1,6 +1,7 @@
 import 'package:coka/models/Game.dart';
 import 'package:coka/models/Story.dart';
 import 'package:coka/providers/game-provider.dart';
+import 'package:coka/providers/story-provider.dart';
 import 'package:coka/widgets/story/scenario-card-widget.dart';
 import 'package:coka/widgets/story/story-card-widget.dart';
 import 'package:coka/widgets/story/story-progress-card-widget.dart';
@@ -12,29 +13,41 @@ class StoryTabPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Consumer<GameProvider>(
-          builder: (context, provider, child) {
-            if(provider.game.state == GameState.END) {
+        child: Consumer2<GameProvider, StoryProvider>(
+          builder: (context, gameProvider, storyProvider, child) {
+            if(gameProvider.game.state == GameState.INITIALIZE) {
+              switch(storyProvider.story.state) {
+                case StoryState.SETUP:
+                  return _showStoryList(context, storyProvider.storyList);
+                  break;
+                case StoryState.INITIALIZED:
+                  return _showSelectedStoryScenarioList(gameProvider, storyProvider);
+                  break;
+                default:
+                  return _showStoryList(context, storyProvider.storyList);
+                  break;
+              }
+            }
+
+            if(gameProvider.game.state == GameState.RUN) {
+              switch(gameProvider.game.story.state) {
+                case StoryState.RUN_ROUND:
+                  return _showStoryProgress(gameProvider.game.story);
+                  break;
+                case StoryState.END_ROUND:
+                  return _showStoryEndTurn();
+                  break;
+                default:
+                  return _showStoryList(context, storyProvider.storyList);
+                  break;
+              }
+            }
+
+            if(gameProvider.game.state == GameState.END) {
               return _showStoryReport();
             }
 
-            switch(provider.game.story.state) {
-              case StoryState.SETUP:
-                return _showStoryList(context, provider.storyList);
-                break;
-              case StoryState.INITIALIZED:
-                return _showSelectedStoryScenarioList(provider.game.story);
-                break;
-              case StoryState.RUN_ROUND:
-                return _showStoryProgress(provider.game.story);
-                break;
-              case StoryState.END_ROUND:
-                return _showStoryEndTurn();
-                break;
-              default:
-                return _showStoryList(context, provider.storyList);
-                break;
-            }
+            return _showStoryList(context, storyProvider.storyList);
           },
         ),
       ),
@@ -58,7 +71,8 @@ class StoryTabPage extends StatelessWidget {
     );
   }
 
-  Widget _showSelectedStoryScenarioList(Story selectedStory) {
+  Widget _showSelectedStoryScenarioList(GameProvider gameProvider, StoryProvider storyProvider) {
+    Story selectedStory = storyProvider.story;
     List<Widget> tempWidgetList = [];
 
     for(int x=0 ; x<selectedStory.scenarioList.length ; x++) {
@@ -70,29 +84,20 @@ class StoryTabPage extends StatelessWidget {
 
     tempWidgetList.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Consumer<GameProvider>(
-        builder: (context, provider, child) {
-          return RaisedButton(
-            child: Text('Choose Another Story'),
-            onPressed: () {
-              provider.cancelStory();
-            },
-          );
+      child: RaisedButton(
+        child: Text('Choose Another Story'),
+        onPressed: () {
+          storyProvider.cancelStory();
         },
       ),
     ));
 
     tempWidgetList.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Consumer<GameProvider>(
-        builder: (context, provider, child) {
-          return RaisedButton(
-            child: Text('Start Game'),
-            onPressed: () {
-              provider.startGame();
-              provider.startRound();
-            },
-          );
+      child: RaisedButton(
+        child: Text('Start Game'),
+        onPressed: (gameProvider.game.playerList.length <= 1)? null : () {
+          gameProvider.startGame();
         },
       ),
     ));
