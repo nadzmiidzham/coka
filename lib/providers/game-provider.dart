@@ -106,12 +106,6 @@ class GameProvider extends ChangeNotifier {
     ];
   }
 
-  // story methods
-  addStory(Story story) {
-    this.game = this._gameBuilder.setStory(story).build();
-    notifyListeners();
-  }
-
   // player methods
   addPlayer(Player player) {
     this.game = this._gameBuilder.addPlayer(player).build();
@@ -125,9 +119,10 @@ class GameProvider extends ChangeNotifier {
   }
 
   // game methods
-  startGame() {
+  startGame(Story story) {
     this.game = this._gameBuilder
         .setState(GameState.RUN)
+        .setStory(story)
         .setStartTime()
         .build();
     this.game.story.state = StoryState.RUN_ROUND;

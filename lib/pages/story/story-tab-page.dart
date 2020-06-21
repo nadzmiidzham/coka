@@ -97,7 +97,7 @@ class StoryTabPage extends StatelessWidget {
       child: RaisedButton(
         child: Text('Start Game'),
         onPressed: (gameProvider.game.playerList.length <= 1)? null : () {
-          gameProvider.startGame();
+          gameProvider.startGame(storyProvider.story);
         },
       ),
     ));
