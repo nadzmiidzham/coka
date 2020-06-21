@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-class StatusAilment {
+class StatusImpairment {
   String name;
   String description;
   int value;
   IconData icon;
 
-  StatusAilment({
+  StatusImpairment({
     this.name,
     this.description,
     this.value,

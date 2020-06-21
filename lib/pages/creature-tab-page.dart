@@ -1,6 +1,6 @@
 import 'package:coka/models/Creature.dart';
 import 'package:coka/providers/creature-provider.dart';
-import 'package:coka/widgets/creature-stat-widget.dart';
+import 'package:coka/widgets/creature-card-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +19,11 @@ class CreatureTabPage extends StatelessWidget {
   }
 
   List<Widget> _creatureList(List<Creature> creaturelist) {
-    List<CreatureStatWidget> creatureStatWidgetList = [];
+    List<CreatureCardWidget> creatureStatWidgetList = [];
 
     if(creaturelist != null) {
       for(int x=0 ; x< creaturelist.length ; x++) {
-        creatureStatWidgetList.add(CreatureStatWidget(
+        creatureStatWidgetList.add(CreatureCardWidget(
           isSummary: false,
           creature: creaturelist[x],
         ));
