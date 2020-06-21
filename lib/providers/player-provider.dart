@@ -78,18 +78,18 @@ class PlayerProvider extends ChangeNotifier {
     return PlayerColor.GREEN;
   }
 
-  // TODO: get a random ability values
+  // TODO: implement random ability function
   List<Ability> _randomPlayerAbility() {
-    List<Ability> abilityList = [];
+    List<Ability> abilityList = this._playerBuilder.abilityList;
 
     for(int x=0 ; x<abilityList.length ; x++) {
-      abilityList.add(Ability(
+      abilityList[x] = Ability(
           name: 'Ability ${x * 10}',
           type: x,
           value: (x * 1),
           description: 'This is ability ${x * 10}',
           iconPath: ''
-      ));
+      );
     }
 
     return abilityList;
