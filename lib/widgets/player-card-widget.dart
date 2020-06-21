@@ -2,7 +2,7 @@ import 'package:coka/models/Player.dart';
 import 'package:coka/models/Worker.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
-import 'package:coka/widgets/stat/hp-widget.dart';
+import 'package:coka/widgets/stat/meter-bar-widget.dart';
 import 'package:coka/widgets/stat/profile-image-widget.dart';
 import 'package:coka/widgets/stat/profile-name-widget.dart';
 import 'package:coka/widgets/stat/status-ailment-widget.dart';
@@ -67,7 +67,13 @@ class _PlayerCardWidgetState extends State<PlayerCardWidget> {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-          child: HPWidget(maxHp: player.maxHp, curHp: player.curHp,),
+          child: MeterBarWidget(
+            maxValue: player.maxHp,
+            curValue: player.curHp,
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.green,
+            textColor: Colors.white
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(5),

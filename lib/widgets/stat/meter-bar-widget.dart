@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class HPWidget extends StatelessWidget {
-  final int maxHp, curHp;
+class MeterBarWidget extends StatelessWidget {
+  final int maxValue, curValue;
+  final Color backgroundColor, foregroundColor, textColor;
 
-  HPWidget({ this.maxHp, this.curHp });
+  MeterBarWidget({
+    this.maxValue,
+    this.curValue,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.textColor
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class HPWidget extends StatelessWidget {
           Container(
             height: 20,
             width: double.infinity,
-            color: Colors.red,
+            color: backgroundColor,
           ),
           _renderHp(context),
           Center(child: _hpValueWidget(),)
@@ -27,8 +34,8 @@ class HPWidget extends StatelessWidget {
   Widget _renderHp(BuildContext context) {
     return Container(
       height: 20,
-      width: MediaQuery.of(context).size.width * (curHp / maxHp),
-      color: Colors.green,
+      width: MediaQuery.of(context).size.width * (curValue / maxValue),
+      color: foregroundColor,
     );
   }
 
@@ -37,10 +44,10 @@ class HPWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          curHp.toString(),
+          curValue.toString(),
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white,
+            color: textColor,
             fontWeight: FontWeight.bold
           ),
         ),
@@ -48,15 +55,15 @@ class HPWidget extends StatelessWidget {
           ' / ',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white,
+            color: textColor,
             fontWeight: FontWeight.bold
           ),
         ),
         Text(
-          maxHp.toString(),
+          maxValue.toString(),
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white,
+            color: textColor,
             fontWeight: FontWeight.bold
           ),
         )

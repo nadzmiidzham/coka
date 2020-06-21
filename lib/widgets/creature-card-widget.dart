@@ -2,7 +2,7 @@ import 'package:coka/models/Ability.dart';
 import 'package:coka/models/Creature.dart';
 import 'package:coka/widgets/stat/ability-widget.dart';
 import 'package:coka/widgets/stat/description-widget.dart';
-import 'package:coka/widgets/stat/hp-widget.dart';
+import 'package:coka/widgets/stat/meter-bar-widget.dart';
 import 'package:coka/widgets/stat/profile-image-widget.dart';
 import 'package:coka/widgets/stat/profile-name-widget.dart';
 import 'package:coka/widgets/stat/status-ailment-widget.dart';
@@ -33,7 +33,13 @@ class CreatureCardWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                child: HPWidget(maxHp: creature.maxHp, curHp: creature.curHp,),
+                child: MeterBarWidget(
+                  maxValue: creature.maxHp,
+                  curValue: creature.curHp,
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.green,
+                  textColor: Colors.white
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
