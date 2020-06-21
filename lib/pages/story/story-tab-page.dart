@@ -32,7 +32,7 @@ class StoryTabPage extends StatelessWidget {
             if(gameProvider.game.state == GameState.RUN) {
               switch(gameProvider.game.story.state) {
                 case StoryState.RUN_ROUND:
-                  return _showStoryProgress(gameProvider.game.story);
+                  return _showStoryProgress(gameProvider);
                   break;
                 case StoryState.END_ROUND:
                   return _showStoryEndTurn();
@@ -107,34 +107,28 @@ class StoryTabPage extends StatelessWidget {
     );
   }
 
-  Widget _showStoryProgress(Story story) {
+  Widget _showStoryProgress(GameProvider provider) {
+    Game game = provider.game;
     List<Widget> tempWidgetList = [];
 
-    tempWidgetList.add(StoryProgressCardWidget());
+    tempWidgetList.add(StoryProgressCardWidget(
+      game: game,
+    ));
 
-    for(int x=0 ; x<story.scenarioList.length ; x++) {
-      tempWidgetList.add(Selector<GameProvider, Story>(
-        selector: (context, provider) => provider.game.story,
-        builder: (context, story, child) {
-          return ScenarioCardWidget(
-              storyImagePath: story.imagePath,
-              scenario: story.scenarioList[x]
-          );
-        },
+    for(int x=0 ; x<game.story.scenarioList.length ; x++) {
+      tempWidgetList.add(ScenarioCardWidget(
+          storyImagePath: game.story.imagePath,
+          scenario: game.story.scenarioList[x]
       ));
     }
 
     tempWidgetList.add(Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       width: double.infinity,
-      child: Consumer<GameProvider>(
-        builder: (context, provider, child) {
-          return RaisedButton(
-            child: Text('END GAME'),
-            onPressed: () {
-              provider.endGame();
-            },
-          );
+      child: RaisedButton(
+        child: Text('END GAME'),
+        onPressed: () {
+          provider.endGame();
         },
       ),
     ));
