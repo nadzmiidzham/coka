@@ -1,4 +1,4 @@
-import 'package:coka/models/Player.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coka/providers/game-provider.dart';
 import 'package:coka/providers/player-provider.dart';
 import 'package:flutter/material.dart';
@@ -82,12 +82,13 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Selector<PlayerProvider, String>(
-              selector: (context, provider) => provider.player.imagePath,
-              builder: (context, imagePath, child) {
+            Consumer<PlayerProvider>(
+              builder: (context, provider, child) {
                 return InkWell(
-                  child: Image(image: AssetImage(imagePath)),
-                  onTap: () {},
+                  child: Image(image: AssetImage(provider.player.imagePath)),
+                  onTap: () async {
+                    await _setImageWidget(provider);
+                  },
                 );
               },
             ),
@@ -125,6 +126,54 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
     );
   }
 
+  Future _setImageWidget(PlayerProvider provider) async {
+    await showDialog(
+      context: context,
+      child: CarouselSlider(
+        options: CarouselOptions(
+          enlargeCenterPage: true
+        ),
+        items: provider.nameImageList.map((predefinedPlayer) => GestureDetector(
+          child: Card(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Column(
+                  children: <Widget>[
+                    Stack(
+                      children: <Widget>[
+                        Image(image: AssetImage(predefinedPlayer.imagePath)),
+                        Positioned.fill(
+                          child: Container(
+                            alignment: Alignment.bottomLeft,
+                            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                            child: Text(
+                              predefinedPlayer.name,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      width: double.infinity,
+                      child: Text(predefinedPlayer.description))
+                  ]
+              ),
+            ),
+          ),
+          onTap: () {
+            provider.selectPredefinedPlayer(predefinedPlayer);
+            Navigator.pop(context);
+          },
+        )).toList(),
+      )
+    );
+  }
+
   Widget _setNameWidget(String playerName) {
     this._textController.text = playerName;
 
@@ -138,8 +187,8 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
   Widget _setLevelWidget(bool isEditable, PlayerProvider provider) {
     return RaisedButton(
       child: Text('Level ${provider.player.level}'),
-      onPressed: !isEditable? null : () {
-        showDialog(
+      onPressed: !isEditable? null : () async {
+        await showDialog(
             context: context,
             builder: (context) {
               List<Widget> dialogWidgetList = [];
@@ -174,8 +223,8 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
               width: 50,
               child: RaisedButton(
                 child: Text('${provider.player.abilityList[x].value}'),
-                onPressed: !isEditable? null : () {
-                  showDialog(
+                onPressed: !isEditable? null : () async {
+                  await showDialog(
                     context: context,
                     builder: (context) {
                       List<Widget> dialogWidgetList = [];

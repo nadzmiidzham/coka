@@ -22,6 +22,31 @@ class PlayerProvider extends ChangeNotifier {
     return [1, 2, 3, 4, 5];
   }
 
+  List<Player> get nameImageList {
+    return [
+      Player(
+        name: "Calamis Earthshaker",
+        imagePath: 'images/test.jpg',
+        description: 'This is Player 1'
+      ),
+      Player(
+        name: "Shesharra",
+        imagePath: 'images/test.jpg',
+        description: 'This is Player 2'
+      ),
+      Player(
+        name: "Thralir Hillfeet",
+        imagePath: 'images/test.jpg',
+        description: 'This is Player 3'
+      ),
+      Player(
+          name: "T'Lorra the Blessed",
+          imagePath: 'images/test.jpg',
+          description: 'This is Player 4'
+      ),
+    ];
+  }
+
   resetPlayer() {
     this._playerBuilder.reset();
     notifyListeners();
@@ -39,6 +64,13 @@ class PlayerProvider extends ChangeNotifier {
 
   setPlayerAbility(int index, Ability ability) {
     this._playerBuilder.setAbility(index, ability);
+    notifyListeners();
+  }
+
+  selectPredefinedPlayer(Player player) {
+    this._playerBuilder.setName(player.name)
+        .setImagePath(player.imagePath)
+        .setDescription(player.description);
     notifyListeners();
   }
 
