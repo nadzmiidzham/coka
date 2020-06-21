@@ -24,14 +24,22 @@ class AbilityWidget extends StatelessWidget {
 
   Widget _abilityWidget(Ability ability) {
     return Card(
-      child: Container(
-        height: 50,
-        width: 50,
-        child: Center(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(5),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image(image: AssetImage(ability.iconPath)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Image(
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.contain,
+                  image: AssetImage(ability.iconPath)
+                ),
+              ),
               Text(ability.value.toString())
             ],
           ),

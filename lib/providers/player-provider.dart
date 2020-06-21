@@ -27,6 +27,11 @@ class PlayerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  setPlayerName(String name) {
+    this._playerBuilder.setName(name);
+    notifyListeners();
+  }
+
   setPlayerLevel(int level) {
     this._playerBuilder.setLevel(level);
     notifyListeners();
@@ -84,11 +89,11 @@ class PlayerProvider extends ChangeNotifier {
 
     for(int x=0 ; x<abilityList.length ; x++) {
       abilityList[x] = Ability(
-          name: 'Ability ${x * 10}',
-          type: x,
-          value: (x * 1),
-          description: 'This is ability ${x * 10}',
-          iconPath: ''
+        iconPath: 'images/test_icon.png',
+        name: 'Ability ${x * 10}',
+        type: x,
+        value: (x * 1),
+        description: 'This is ability ${x * 10}',
       );
     }
 

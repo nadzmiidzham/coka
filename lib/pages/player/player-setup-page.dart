@@ -1,3 +1,4 @@
+import 'package:coka/models/Player.dart';
 import 'package:coka/providers/game-provider.dart';
 import 'package:coka/providers/player-provider.dart';
 import 'package:flutter/material.dart';
@@ -34,42 +35,41 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              _playerCardWidget(),
-              !this._isRandomize? SizedBox.shrink() : Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                width: double.infinity,
-                child: Consumer<PlayerProvider>(
-                  builder: (context, provider, child) {
-                    return RaisedButton(
-                      child: Text('Randomize'),
-                      onPressed: () {
-                        provider.randomizePlayer();
-                      },
-                    );
-                  },
-                ),
+        child: Column(
+          children: <Widget>[
+            _playerCardWidget(),
+            !this._isRandomize? SizedBox.shrink() : Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              width: double.infinity,
+              child: Consumer<PlayerProvider>(
+                builder: (context, provider, child) {
+                  return RaisedButton(
+                    child: Text('Randomize'),
+                    onPressed: () {
+                      provider.randomizePlayer();
+                    },
+                  );
+                },
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                width: double.infinity,
-                child: Consumer2<GameProvider, PlayerProvider>(
-                  builder: (context, gameProvider, playerProvider, child) {
-                    return RaisedButton(
-                      child: Text('Create Player'),
-                      onPressed: () {
-                        gameProvider.addPlayer(playerProvider.player);
-                        playerProvider.resetPlayer();
-                        Navigator.pop(context);
-                      },
-                    );
-                  },
-                ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              width: double.infinity,
+              child: Consumer2<GameProvider, PlayerProvider>(
+                builder: (context, gameProvider, playerProvider, child) {
+                  return RaisedButton(
+                    child: Text('Create Player'),
+                    onPressed: () {
+                      playerProvider.setPlayerName(this._textController.text);
+                      gameProvider.addPlayer(playerProvider.player);
+                      playerProvider.resetPlayer();
+                      Navigator.pop(context);
+                    },
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -202,7 +202,8 @@ class _PlayerSetupPageState extends State<PlayerSetupPage> {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: CircleAvatar(
-                backgroundImage: AssetImage('images/test.jpg'),
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage(provider.player.abilityList[x].iconPath),
               ),
             ),
             Text(provider.player.abilityList[x].name)
