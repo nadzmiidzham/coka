@@ -25,7 +25,7 @@ class PlayerTabPage extends StatelessWidget {
     List<Widget> tempWidgetList = [];
 
     for(int x=0 ; x<playerList.length ; x++) {
-      tempWidgetList.add(PlayerCardWidget(player: playerList[x], isSummary: false));
+      tempWidgetList.add(PlayerCardWidget(player: playerList[x], isSummary: true));
     }
 
     if(playerList.length < maxPlayer) {
