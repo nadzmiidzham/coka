@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MeterBarWidget extends StatelessWidget {
   final int maxValue, curValue;
@@ -20,22 +19,19 @@ class MeterBarWidget extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
-            height: 20,
-            width: double.infinity,
-            color: backgroundColor,
+            height: 15,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: LinearProgressIndicator(
+                value: (curValue / maxValue),
+                valueColor: AlwaysStoppedAnimation<Color>(foregroundColor),
+                backgroundColor: backgroundColor,
+              ),
+            ),
           ),
-          _renderHp(context),
           Center(child: _hpValueWidget(),)
         ],
       ),
-    );
-  }
-
-  Widget _renderHp(BuildContext context) {
-    return Container(
-      height: 20,
-      width: MediaQuery.of(context).size.width * (curValue / maxValue),
-      color: foregroundColor,
     );
   }
 
@@ -47,8 +43,8 @@ class MeterBarWidget extends StatelessWidget {
           curValue.toString(),
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.bold
+              color: textColor,
+              fontWeight: FontWeight.bold
           ),
         ),
         Text(
@@ -63,10 +59,10 @@ class MeterBarWidget extends StatelessWidget {
           maxValue.toString(),
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.bold
+              color: textColor,
+              fontWeight: FontWeight.bold
           ),
-        )
+        ),
       ],
     );
   }
