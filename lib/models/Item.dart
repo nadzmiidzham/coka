@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 class Item {
   String name;
   int type;
-  IconData icon;
+  String iconPath;
 
   Item({
     this.name,
     this.type,
-    this.icon,
+    this.iconPath,
   });
 }

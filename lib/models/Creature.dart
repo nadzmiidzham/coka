@@ -1,15 +1,15 @@
 import 'package:coka/models/Ability.dart';
-import 'package:coka/models/StatusAilment.dart';
+import 'package:coka/models/StatusImpairment.dart';
 
 class Creature {
-  String image;
   String name;
+  String image;
   int xp;
   int maxHp, curHp;
   String description;
-  List<Ability> mainAbilities;
-  List<Ability> specialAbilities;
-  List<StatusAilment> statusAilments;
+  List<Ability> mainAbilityList;
+  List<Ability> specialAbilityList;
+  List<StatusImpairment> statusImpairmentList;
 
   Creature({
     this.image,
@@ -18,8 +18,8 @@ class Creature {
     this.maxHp,
     this.curHp,
     this.description,
-    this.mainAbilities,
-    this.specialAbilities,
-    this.statusAilments
+    this.mainAbilityList,
+    this.specialAbilityList,
+    this.statusImpairmentList
   });
 }

@@ -1,137 +1,134 @@
 import 'package:coka/models/Ability.dart';
-import 'package:coka/models/Item.dart';
 import 'package:coka/models/Player.dart';
-import 'package:coka/models/StatusAilment.dart';
-import 'package:coka/models/Worker.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:coka/modules/player-builder.dart';
 import 'package:flutter/material.dart';
 
 class PlayerProvider extends ChangeNotifier {
-  Player player;
+  PlayerBuilder _playerBuilder;
 
   PlayerProvider() {
-    initPlayer();
+    this._playerBuilder = PlayerBuilder();
   }
 
-  // other methods
-  initPlayer() {
-    this.player = Player(
-      name: 'Nadzmi',
-      level: 2,
-      description: 'This is Nadzmi',
-      maxHp: 10,
-      curHp: 8,
-      image: 'images/test.jpg',
-      statusAilments: [
-        StatusAilment(
-          name: '',
-          description: '',
-          value: 0,
-          icon: Icons.edit
-        )
-      ],
-      abilities: [
-        Ability(
-          name: '',
-          description: '',
-          type: 1,
-          value: 1,
-          icon: Icons.description
-        ),
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 2,
-            icon: Icons.brightness_1
-        ),
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 3,
-            icon: Icons.trip_origin
-        ),
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 4,
-            icon: Icons.ac_unit
-        ),
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 5,
-            icon: Icons.access_alarm
-        )
-      ],
-      workerAbilities: [
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 1,
-            icon: Icons.account_balance_wallet
-        ),
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 2,
-            icon: Icons.library_add
-        ),
-        Ability(
-            name: '',
-            description: '',
-            type: 1,
-            value: 3,
-            icon: Icons.blur_circular
-        )
-      ],
-      workers: [
-        Worker(
-          no: 1,
-          icon: Icons.adb,
-          items: [
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-            Item(name: '', type: 1, icon: Icons.face),
-          ]
-        ),
-        Worker(no: 2, icon: Icons.alarm_on)
-      ],
-    );
+  Player get player { return this._playerBuilder.build(); }
+  List<Player> get playerList { return this._playerBuilder.buildList(); }
+  Player get initialPlayerStat { return this._playerBuilder.reset().build(); }
 
+  List<int> get initialLevelValueList {
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  }
+
+  List<int> get initialAbilityValueList {
+    return [1, 2, 3, 4, 5];
+  }
+
+  List<Player> get nameImageList {
+    return [
+      Player(
+        name: "Calamis Earthshaker",
+        imagePath: 'images/test.jpg',
+        description: 'This is Player 1'
+      ),
+      Player(
+        name: "Shesharra",
+        imagePath: 'images/test.jpg',
+        description: 'This is Player 2'
+      ),
+      Player(
+        name: "Thralir Hillfeet",
+        imagePath: 'images/test.jpg',
+        description: 'This is Player 3'
+      ),
+      Player(
+          name: "T'Lorra the Blessed",
+          imagePath: 'images/test.jpg',
+          description: 'This is Player 4'
+      ),
+    ];
+  }
+
+  resetPlayer() {
+    this._playerBuilder.reset();
     notifyListeners();
   }
 
-  // notify listener action
-  increaseHP(int amount) {
-    int newHp = player.curHp + amount;
+  setPlayerName(String name) {
+    this._playerBuilder.setName(name);
+    notifyListeners();
+  }
 
-    if(newHp >= player.maxHp) {
-      player.curHp = player.maxHp;
-    } else {
-      player.curHp = newHp;
+  setPlayerLevel(int level) {
+    this._playerBuilder.setLevel(level);
+    notifyListeners();
+  }
+
+  setPlayerAbility(int index, Ability ability) {
+    this._playerBuilder.setAbility(index, ability);
+    notifyListeners();
+  }
+
+  selectPredefinedPlayer(Player player) {
+    this._playerBuilder.setName(player.name)
+        .setImagePath(player.imagePath)
+        .setDescription(player.description);
+    notifyListeners();
+  }
+
+  savePlayer() {
+    this._playerBuilder.save();
+    notifyListeners();
+  }
+
+  randomizePlayer() {
+    Player player = this._playerBuilder.build();
+
+    this._playerBuilder.reset()
+        .setName(player.name)
+        .setImagePath(player.imagePath)
+        .setDescription(player.description)
+        .setColor(this._randomPlayerColor())
+        .setAbilityList(this._randomPlayerAbility());
+    notifyListeners();
+  }
+
+  PlayerColor _randomPlayerColor() {
+    List<Player> tempPlayerList = this._playerBuilder.buildList();
+    List<PlayerColor> tempColorList = [];
+
+    for(int x=0 ; x<tempPlayerList.length ; x++) {
+      tempColorList.add(tempPlayerList[x].color);
     }
 
-    notifyListeners();
-  }
-
-  decreaseHP(int amount) {
-    int newHp = player.curHp - amount;
-
-    if(newHp <= 0) {
-      player.curHp = 0;
-    } else {
-      player.curHp = newHp;
+    if(tempColorList.contains(PlayerColor.GREEN)) {
+      return PlayerColor.GREEN;
+    }
+    if(tempColorList.contains(PlayerColor.GREEN)) {
+      return PlayerColor.BLUE;
+    }
+    if(tempColorList.contains(PlayerColor.GREEN)) {
+      return PlayerColor.RED;
+    }
+    if(tempColorList.contains(PlayerColor.GREEN)) {
+      return PlayerColor.YELLOW;
     }
 
-    notifyListeners();
+    return PlayerColor.GREEN;
+  }
+
+  // TODO: implement random ability function
+  List<Ability> _randomPlayerAbility() {
+    List<Ability> abilityList = this._playerBuilder.abilityList;
+
+    for(int x=0 ; x<abilityList.length ; x++) {
+      abilityList[x] = Ability(
+        iconPath: 'images/test_icon.png',
+        name: 'Ability ${x * 10}',
+        type: x,
+        value: (x * 1),
+        description: 'This is ability ${x * 10}',
+      );
+    }
+
+    return abilityList;
   }
 }
