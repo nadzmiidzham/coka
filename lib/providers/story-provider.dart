@@ -26,7 +26,7 @@ class StoryProvider extends ChangeNotifier {
             scenarioImagePath: 'images/scenario-front.jpeg',
             setupImagePath: 'images/scenario-back.jpeg',
             hope: 3, morale: 3,
-            time: GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning'),
+            time: GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
             xp: 1, stat: 1, skill: 1, equipment: 1, creatureLevel: 1
           )
         ]
@@ -42,7 +42,7 @@ class StoryProvider extends ChangeNotifier {
             scenarioImagePath: 'images/scenario-front.jpeg',
             setupImagePath: 'images/scenario-back.jpeg',
             hope: 3, morale: 3,
-            time: GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning'),
+            time: GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
             xp: 1, stat: 1, skill: 1, equipment: 1, creatureLevel: 1
           ),
           Scenario(
@@ -51,7 +51,7 @@ class StoryProvider extends ChangeNotifier {
             scenarioImagePath: 'images/scenario-front.jpeg',
             setupImagePath: 'images/scenario-back.jpeg',
             hope: 3, morale: 3,
-            time: GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning'),
+            time: GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
             xp: 1, stat: 1, skill: 1, equipment: 1, creatureLevel: 1
           )
         ]
@@ -67,7 +67,7 @@ class StoryProvider extends ChangeNotifier {
             scenarioImagePath: 'images/scenario-front.jpeg',
             setupImagePath: 'images/scenario-back.jpeg',
             hope: 3, morale: 3,
-            time: GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning'),
+            time: GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
             xp: 1, stat: 1, skill: 1, equipment: 1, creatureLevel: 1
           ),
           Scenario(
@@ -76,7 +76,7 @@ class StoryProvider extends ChangeNotifier {
             scenarioImagePath: 'images/scenario-front.jpeg',
             setupImagePath: 'images/scenario-back.jpeg',
             hope: 3, morale: 3,
-            time: GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning'),
+            time: GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
             xp: 1, stat: 1, skill: 1, equipment: 1, creatureLevel: 1
           ),
           Scenario(
@@ -85,7 +85,7 @@ class StoryProvider extends ChangeNotifier {
             scenarioImagePath: 'images/scenario-front.jpeg',
             setupImagePath: 'images/scenario-back.jpeg',
             hope: 3, morale: 3,
-            time: GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning'),
+            time: GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
             xp: 1, stat: 1, skill: 1, equipment: 1, creatureLevel: 1
           )
         ]

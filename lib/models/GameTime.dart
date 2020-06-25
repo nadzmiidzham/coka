@@ -9,10 +9,12 @@ enum GameTimeState {
 
 class GameTime {
   GameTimeState time;
+  String name;
   String description;
 
   GameTime({
     this.time,
+    this.name,
     this.description
   });
 }

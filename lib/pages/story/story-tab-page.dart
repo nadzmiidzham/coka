@@ -113,6 +113,7 @@ class StoryTabPage extends StatelessWidget {
 
     tempWidgetList.add(StoryProgressCardWidget(
       game: game,
+      timeList: provider.gameTimeList,
     ));
 
     for(int x=0 ; x<game.story.scenarioList.length ; x++) {

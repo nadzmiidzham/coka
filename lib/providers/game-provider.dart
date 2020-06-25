@@ -1,5 +1,6 @@
 import 'package:coka/models/Creature.dart';
 import 'package:coka/models/Game.dart';
+import 'package:coka/models/GameTime.dart';
 import 'package:coka/models/Player.dart';
 import 'package:coka/models/Story.dart';
 import 'package:coka/modules/game-builder.dart';
@@ -11,6 +12,17 @@ class GameProvider extends ChangeNotifier {
 
   GameProvider() {
     initProvider();
+  }
+
+  List<GameTime> get gameTimeList {
+    return [
+      GameTime(time: GameTimeState.LATE_MORNING, name: 'Late Morning', description: 'Late Morning'),
+      GameTime(time: GameTimeState.MIDDAY, name: 'Midday', description: 'Midday'),
+      GameTime(time: GameTimeState.AFTERNOON, name: 'Afternoon', description: 'Afternoon'),
+      GameTime(time: GameTimeState.EVENING, name: 'Evening', description: 'Evening'),
+      GameTime(time: GameTimeState.MIDNIGHT, name: 'Midnight', description: 'Midnight'),
+      GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning'),
+    ];
   }
 
   // init method
@@ -38,6 +50,8 @@ class GameProvider extends ChangeNotifier {
     this.game = this._gameBuilder
         .setState(GameState.RUN)
         .setStory(story)
+        .setStartHope()
+        .setStartMorale()
         .setStartTime()
         .build();
     this.game.story.state = StoryState.RUN_ROUND;

@@ -11,8 +11,10 @@ enum GameState {
 
 class Game {
   GameState state;
-  GameTime time;
   Story story;
+  int hope;
+  int morale;
+  GameTime time;
   int maxPlayer;
   List<Player> playerList;
   List<Creature> creatureList;
@@ -23,6 +25,8 @@ class Game {
     this.story,
     this.maxPlayer,
     this.playerList,
-    this.creatureList
+    this.creatureList,
+    this.hope,
+    this.morale
   });
 }

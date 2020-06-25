@@ -6,6 +6,8 @@ import 'package:coka/models/Story.dart';
 
 class GameBuilder {
   GameState _state;
+  int _hope;
+  int _morale;
   GameTime _time;
   Story _story;
   int _maxPlayer;
@@ -18,7 +20,9 @@ class GameBuilder {
 
   GameBuilder reset() {
     this._state = GameState.INITIALIZE;
-    this._time = new GameTime(time: GameTimeState.EARLY_MORNING, description: 'Early Morning');
+    this._hope = 3;
+    this._morale = 3;
+    this._time = new GameTime(time: GameTimeState.EARLY_MORNING, name: 'Early Morning', description: 'Early Morning');
     this._story = new Story();
     this._maxPlayer = 4;
     this._playerList = [];
@@ -28,6 +32,16 @@ class GameBuilder {
 
   GameBuilder setState(GameState state) {
     this._state = state;
+    return this;
+  }
+
+  GameBuilder setStartHope() {
+    this._hope = this._story.scenarioList[0].hope;
+    return this;
+  }
+
+  GameBuilder setStartMorale() {
+    this._morale = this._story.scenarioList[0].morale;
     return this;
   }
 
@@ -76,6 +90,8 @@ class GameBuilder {
   Game build() {
     return Game(
       state: this._state,
+      hope: this._hope,
+      morale: this._morale,
       time: this._time,
       story: this._story,
       maxPlayer: this._maxPlayer,
