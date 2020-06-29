@@ -12,6 +12,8 @@ class StoryTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Center(
         child: Consumer2<GameProvider, StoryProvider>(
           builder: (context, gameProvider, storyProvider, child) {
@@ -144,21 +146,28 @@ class StoryTabPage extends StatelessWidget {
   }
 
   Widget _showStoryReport(GameProvider gameProvider, StoryProvider storyProvider) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Column(
-        children: <Widget>[
-          Card(child: Text('You Win')),
-          RaisedButton(
+    return Column(
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Center(child: Text('You Win')),
+            ),
+          ),
+        ),
+        Container(
+          width: double.infinity,
+          child: RaisedButton(
             child: Text('Continue'),
             onPressed: () {
               storyProvider.resetStory();
               gameProvider.resetGame();
             },
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

@@ -13,6 +13,7 @@ class SetupStoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(story.title)),
       body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Center(
           child: ListView(
             children: _showScenarioList(story),
