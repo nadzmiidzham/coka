@@ -102,7 +102,7 @@ class StoryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  cancelStory() {
+  resetStory() {
     this._storyBuilder.reset();
     notifyListeners();
   }

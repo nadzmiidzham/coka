@@ -44,7 +44,7 @@ class StoryTabPage extends StatelessWidget {
             }
 
             if(gameProvider.game.state == GameState.END) {
-              return _showStoryReport();
+              return _showStoryReport(gameProvider, storyProvider);
             }
 
             return _showStoryList(context, storyProvider.storyList);
@@ -87,7 +87,7 @@ class StoryTabPage extends StatelessWidget {
       child: RaisedButton(
         child: Text('Choose Another Story'),
         onPressed: () {
-          storyProvider.cancelStory();
+          storyProvider.resetStory();
         },
       ),
     ));
@@ -143,7 +143,22 @@ class StoryTabPage extends StatelessWidget {
     return SizedBox.shrink();
   }
 
-  Widget _showStoryReport() {
-    return SizedBox.shrink();
+  Widget _showStoryReport(GameProvider gameProvider, StoryProvider storyProvider) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Column(
+        children: <Widget>[
+          Card(child: Text('You Win')),
+          RaisedButton(
+            child: Text('Continue'),
+            onPressed: () {
+              storyProvider.resetStory();
+              gameProvider.resetGame();
+            },
+          )
+        ],
+      ),
+    );
   }
 }

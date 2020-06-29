@@ -59,7 +59,12 @@ class GameProvider extends ChangeNotifier {
   }
 
   endGame() {
-    this.game.state = GameState.END;
+    this.game = this._gameBuilder.setState(GameState.END).build();
+    notifyListeners();
+  }
+
+  resetGame() {
+    this.game = this._gameBuilder.reset().build();
     notifyListeners();
   }
 }
