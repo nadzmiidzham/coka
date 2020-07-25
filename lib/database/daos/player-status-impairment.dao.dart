@@ -1,0 +1,16 @@
+import 'package:coka/database/db.dart';
+import 'package:coka/database/tables/player-status-impairment.table.dart';
+import 'package:moor/moor.dart';
+
+part 'player-status-impairment.dao.g.dart';
+
+@UseDao(tables: [PlayerStatusImpairments])
+class PlayerStatusImpairmentDao extends DatabaseAccessor<DB> with _$PlayerStatusImpairmentDaoMixin {
+  PlayerStatusImpairmentDao(DB attachedDatabase) : super(attachedDatabase);
+
+  Future<List<PlayerStatusImpairment>> getAllPlayerStatusImpairments() => select(playerStatusImpairments).get();
+  Stream<List<PlayerStatusImpairment>> watchAllPlayerStatusImpairments() => select(playerStatusImpairments).watch();
+  Future<int> insertPlayerStatusImpairment(PlayerStatusImpairment playerStatusImpairment) => into(playerStatusImpairments).insert(playerStatusImpairment);
+  Future updatePlayerStatusImpairment(PlayerStatusImpairment playerStatusImpairment) => update(playerStatusImpairments).replace(playerStatusImpairment);
+  Future deletePlayerStatusImpairment(PlayerStatusImpairment playerStatusImpairment) => delete(playerStatusImpairments).delete(playerStatusImpairment);
+}
