@@ -10,7 +10,7 @@ class CreatureStatusImpairmentDao extends DatabaseAccessor<DB> with _$CreatureSt
 
   Future<List<CreatureStatusImpairment>> getAllCreatureStatusImpairments() => select(creatureStatusImpairments).get();
   Stream<List<CreatureStatusImpairment>> watchAllCreatureStatusImpairments() => select(creatureStatusImpairments).watch();
-  Future<int> insertCreatureStatusImpairment(CreatureStatusImpairment creatureStatusImpairment) => into(creatureStatusImpairments).insert(creatureStatusImpairment);
-  Future updateCreatureStatusImpairment(CreatureStatusImpairment creatureStatusImpairment) => update(creatureStatusImpairments).replace(creatureStatusImpairment);
-  Future deleteCreatureStatusImpairment(CreatureStatusImpairment creatureStatusImpairment) => delete(creatureStatusImpairments).delete(creatureStatusImpairment);
+  Future<int> insertCreatureStatusImpairment(CreatureStatusImpairmentsCompanion creatureStatusImpairment) => into(creatureStatusImpairments).insert(creatureStatusImpairment);
+  Future updateCreatureStatusImpairment(CreatureStatusImpairmentsCompanion creatureStatusImpairment) => update(creatureStatusImpairments).replace(creatureStatusImpairment);
+  Future deleteCreatureStatusImpairment(CreatureStatusImpairmentsCompanion creatureStatusImpairment) => delete(creatureStatusImpairments).delete(creatureStatusImpairment);
 }

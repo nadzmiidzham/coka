@@ -10,7 +10,7 @@ class CreatureDao extends DatabaseAccessor<DB> with _$CreatureDaoMixin {
 
   Future<List<Creature>> getAllCreatures() => select(creatures).get();
   Stream<List<Creature>> watchAllCreatures() => select(creatures).watch();
-  Future<int> insertCreature(Creature creature) => into(creatures).insert(creature);
-  Future updateCreature(Creature creature) => update(creatures).replace(creature);
-  Future deleteCreature(Creature creature) => delete(creatures).delete(creature);
+  Future<int> insertCreature(CreaturesCompanion creature) => into(creatures).insert(creature);
+  Future updateCreature(CreaturesCompanion creature) => update(creatures).replace(creature);
+  Future deleteCreature(CreaturesCompanion creature) => delete(creatures).delete(creature);
 }

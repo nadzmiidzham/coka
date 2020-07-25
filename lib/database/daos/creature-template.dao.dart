@@ -10,7 +10,7 @@ class CreatureTemplateDao extends DatabaseAccessor<DB> with _$CreatureTemplateDa
 
   Future<List<CreatureTemplate>> getAllCreatureTemplates() => select(creatureTemplates).get();
   Stream<List<CreatureTemplate>> watchAllCreatureTemplates() => select(creatureTemplates).watch();
-  Future<int> insertCreatureTemplate(CreatureTemplate creatureTemplate) => into(creatureTemplates).insert(creatureTemplate);
-  Future updateCreatureTemplate(CreatureTemplate creatureTemplate) => update(creatureTemplates).replace(creatureTemplate);
-  Future deleteCreatureTemplate(CreatureTemplate creatureTemplate) => delete(creatureTemplates).delete(creatureTemplate);
+  Future<int> insertCreatureTemplate(CreatureTemplatesCompanion creatureTemplate) => into(creatureTemplates).insert(creatureTemplate);
+  Future updateCreatureTemplate(CreatureTemplatesCompanion creatureTemplate) => update(creatureTemplates).replace(creatureTemplate);
+  Future deleteCreatureTemplate(CreatureTemplatesCompanion creatureTemplate) => delete(creatureTemplates).delete(creatureTemplate);
 }

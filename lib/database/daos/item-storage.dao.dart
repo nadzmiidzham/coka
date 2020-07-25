@@ -12,7 +12,7 @@ class ItemStorageDao extends DatabaseAccessor<DB> with _$ItemStorageDaoMixin {
 
   Future<List<ItemStorage>> getAllItemStorages() => select(itemStorages).get();
   Stream<List<ItemStorage>> watchAllItemStorages() => select(itemStorages).watch();
-  Future<int> insertItemStorage(ItemStorage itemStorage) => into(itemStorages).insert(itemStorage);
-  Future updateItemStorage(ItemStorage itemStorage) => update(itemStorages).replace(itemStorage);
-  Future deleteItemStorage(ItemStorage itemStorage) => delete(itemStorages).delete(itemStorage);
+  Future<int> insertItemStorage(ItemStoragesCompanion itemStorage) => into(itemStorages).insert(itemStorage);
+  Future updateItemStorage(ItemStoragesCompanion itemStorage) => update(itemStorages).replace(itemStorage);
+  Future deleteItemStorage(ItemStoragesCompanion itemStorage) => delete(itemStorages).delete(itemStorage);
 }

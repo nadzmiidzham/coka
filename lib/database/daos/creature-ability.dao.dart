@@ -10,7 +10,7 @@ class CreatureAbilityDao extends DatabaseAccessor<DB> with _$CreatureAbilityDaoM
 
   Future<List<CreatureAbility>> getAllCreatureAbilities() => select(creatureAbilities).get();
   Stream<List<CreatureAbility>> watchAllCreatureAbilities() => select(creatureAbilities).watch();
-  Future<int> insertCreatureAbility(CreatureAbility creatureAbility) => into(creatureAbilities).insert(creatureAbility);
-  Future updateCreatureAbility(CreatureAbility creatureAbility) => update(creatureAbilities).replace(creatureAbility);
-  Future deleteCreatureAbility(CreatureAbility creatureAbility) => delete(creatureAbilities).delete(creatureAbility);
+  Future<int> insertCreatureAbility(CreatureAbilitiesCompanion creatureAbility) => into(creatureAbilities).insert(creatureAbility);
+  Future updateCreatureAbility(CreatureAbilitiesCompanion creatureAbility) => update(creatureAbilities).replace(creatureAbility);
+  Future deleteCreatureAbility(CreatureAbilitiesCompanion creatureAbility) => delete(creatureAbilities).delete(creatureAbility);
 }

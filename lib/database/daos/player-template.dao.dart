@@ -10,7 +10,7 @@ class PlayerTemplateDao extends DatabaseAccessor<DB> with _$PlayerTemplateDaoMix
 
   Future<List<PlayerTemplate>> getAllPlayerTemplates() => select(playerTemplates).get();
   Stream<List<PlayerTemplate>> watchAllPlayerTemplates() => select(playerTemplates).watch();
-  Future<int> insertPlayerTemplate(PlayerTemplate playerTemplate) => into(playerTemplates).insert(playerTemplate);
-  Future updatePlayerTemplate(PlayerTemplate playerTemplate) => update(playerTemplates).replace(playerTemplate);
-  Future deletePlayerTemplate(PlayerTemplate playerTemplate) => delete(playerTemplates).delete(playerTemplate);
+  Future<int> insertPlayerTemplate(PlayerTemplatesCompanion playerTemplate) => into(playerTemplates).insert(playerTemplate);
+  Future updatePlayerTemplate(PlayerTemplatesCompanion playerTemplate) => update(playerTemplates).replace(playerTemplate);
+  Future deletePlayerTemplate(PlayerTemplatesCompanion playerTemplate) => delete(playerTemplates).delete(playerTemplate);
 }

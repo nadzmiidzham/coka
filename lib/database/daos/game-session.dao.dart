@@ -10,7 +10,7 @@ class GameSessionDao extends DatabaseAccessor<DB> with _$GameSessionDaoMixin {
 
   Future<List<GameSession>> getAllGameSessions() => select(gameSessions).get();
   Stream<List<GameSession>> watchAllGameSessions() => select(gameSessions).watch();
-  Future<int> insertGameSession(GameSession gameSession) => into(gameSessions).insert(gameSession);
-  Future updateGameSession(GameSession gameSession) => update(gameSessions).replace(gameSession);
-  Future deleteGameSession(GameSession gameSession) => delete(gameSessions).delete(gameSession);
+  Future<int> insertGameSession(GameSessionsCompanion gameSession) => into(gameSessions).insert(gameSession);
+  Future updateGameSession(GameSessionsCompanion gameSession) => update(gameSessions).replace(gameSession);
+  Future deleteGameSession(GameSessionsCompanion gameSession) => delete(gameSessions).delete(gameSession);
 }

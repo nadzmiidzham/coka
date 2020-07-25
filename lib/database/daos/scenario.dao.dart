@@ -10,7 +10,7 @@ class ScenarioDao extends DatabaseAccessor<DB> with _$ScenarioDaoMixin {
 
   Future<List<Scenario>> getAllScenarios() => select(scenarios).get();
   Stream<List<Scenario>> watchAllScenarios() => select(scenarios).watch();
-  Future<int> insertScenario(Scenario scenario) => into(scenarios).insert(scenario);
-  Future updateScenario(Scenario scenario) => update(scenarios).replace(scenario);
-  Future deleteScenario(Scenario scenario) => delete(scenarios).delete(scenario);
+  Future<int> insertScenario(ScenariosCompanion scenario) => into(scenarios).insert(scenario);
+  Future updateScenario(ScenariosCompanion scenario) => update(scenarios).replace(scenario);
+  Future deleteScenario(ScenariosCompanion scenario) => delete(scenarios).delete(scenario);
 }

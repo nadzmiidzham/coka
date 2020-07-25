@@ -11,7 +11,7 @@ class ItemDao extends DatabaseAccessor<DB> with _$ItemDaoMixin {
 
   Future<List<Item>> getAllItems() => select(items).get();
   Stream<List<Item>> watchAllItems() => select(items).watch();
-  Future<int> insertItem(Item item) => into(items).insert(item);
-  Future updateItem(Item item) => update(items).replace(item);
-  Future deleteItem(Item item) => delete(items).delete(item);
+  Future<int> insertItem(ItemsCompanion item) => into(items).insert(item);
+  Future updateItem(ItemsCompanion item) => update(items).replace(item);
+  Future deleteItem(ItemsCompanion item) => delete(items).delete(item);
 }

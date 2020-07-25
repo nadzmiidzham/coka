@@ -10,7 +10,7 @@ class StoryDao extends DatabaseAccessor<DB> with _$StoryDaoMixin {
 
   Future<List<Story>> getAllStories() => select(stories).get();
   Stream<List<Story>> watchAllStories() => select(stories).watch();
-  Future<int> insertStory(Story story) => into(stories).insert(story);
-  Future updateStory(Story story) => update(stories).replace(story);
-  Future deleteStory(Story story) => delete(stories).delete(story);
+  Future<int> insertStory(StoriesCompanion story) => into(stories).insert(story);
+  Future updateStory(StoriesCompanion story) => update(stories).replace(story);
+  Future deleteStory(StoriesCompanion story) => delete(stories).delete(story);
 }

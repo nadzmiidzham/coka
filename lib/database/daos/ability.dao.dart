@@ -10,7 +10,7 @@ class AbilityDao extends DatabaseAccessor<DB> with _$AbilityDaoMixin {
 
   Future<List<Ability>> getAllAbilities() => select(abilities).get();
   Stream<List<Ability>> watchAllAbilities() => select(abilities).watch();
-  Future<int> insertAbility(Ability ability) => into(abilities).insert(ability);
-  Future updateAbility(Ability ability) => update(abilities).replace(ability);
-  Future deleteAbility(Ability ability) => delete(abilities).delete(ability);
+  Future<int> insertAbility(AbilitiesCompanion ability) => into(abilities).insert(ability);
+  Future updateAbility(AbilitiesCompanion ability) => update(abilities).replace(ability);
+  Future deleteAbility(AbilitiesCompanion ability) => delete(abilities).delete(ability);
 }

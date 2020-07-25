@@ -10,7 +10,7 @@ class WorkerItemDao extends DatabaseAccessor<DB> with _$WorkerItemDaoMixin {
 
   Future<List<WorkerItem>> getAllWorkerItems() => select(workerItems).get();
   Stream<List<WorkerItem>> watchAllWorkerItems() => select(workerItems).watch();
-  Future<int> insertWorkerItem(WorkerItem workerItem) => into(workerItems).insert(workerItem);
-  Future updateWorkerItem(WorkerItem workerItem) => update(workerItems).replace(workerItem);
-  Future deleteWorkerItem(WorkerItem workerItem) => delete(workerItems).delete(workerItem);
+  Future<int> insertWorkerItem(WorkerItemsCompanion workerItem) => into(workerItems).insert(workerItem);
+  Future updateWorkerItem(WorkerItemsCompanion workerItem) => update(workerItems).replace(workerItem);
+  Future deleteWorkerItem(WorkerItemsCompanion workerItem) => delete(workerItems).delete(workerItem);
 }

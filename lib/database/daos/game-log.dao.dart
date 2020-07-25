@@ -10,7 +10,7 @@ class GameLogDao extends DatabaseAccessor<DB> with _$GameLogDaoMixin {
 
   Future<List<GameLog>> getAllGameLogs() => select(gameLogs).get();
   Stream<List<GameLog>> watchAllGameLogs() => select(gameLogs).watch();
-  Future<int> insertGameLog(GameLog gameLog) => into(gameLogs).insert(gameLog);
-  Future updateGameLog(GameLog gameLog) => update(gameLogs).replace(gameLog);
-  Future deleteGameLog(GameLog gameLog) => delete(gameLogs).delete(gameLog);
+  Future<int> insertGameLog(GameLogsCompanion gameLog) => into(gameLogs).insert(gameLog);
+  Future updateGameLog(GameLogsCompanion gameLog) => update(gameLogs).replace(gameLog);
+  Future deleteGameLog(GameLogsCompanion gameLog) => delete(gameLogs).delete(gameLog);
 }

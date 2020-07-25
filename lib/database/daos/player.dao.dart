@@ -10,7 +10,7 @@ class PlayerDao extends DatabaseAccessor<DB> with _$PlayerDaoMixin {
 
   Future<List<Player>> getAllPlayers() => select(players).get();
   Stream<List<Player>> watchAllPlayers() => select(players).watch();
-  Future<int> insertPlayer(Player player) => into(players).insert(player);
-  Future updatePlayer(Player player) => update(players).replace(player);
-  Future deletePlayer(Player player) => delete(players).delete(player);
+  Future<int> insertPlayer(PlayersCompanion player) => into(players).insert(player);
+  Future updatePlayer(PlayersCompanion player) => update(players).replace(player);
+  Future deletePlayer(PlayersCompanion player) => delete(players).delete(player);
 }

@@ -10,7 +10,7 @@ class StatBarDao extends DatabaseAccessor<DB> with _$StatBarDaoMixin {
 
   Future<List<StatBar>> getAllStatBars() => select(statBars).get();
   Stream<List<StatBar>> watchAllStatBars() => select(statBars).watch();
-  Future<int> insertStatBar(StatBar statBar) => into(statBars).insert(statBar);
-  Future updateStatBar(StatBar statBar) => update(statBars).replace(statBar);
-  Future deleteStatBar(StatBar statBar) => delete(statBars).delete(statBar);
+  Future<int> insertStatBar(StatBarsCompanion statBar) => into(statBars).insert(statBar);
+  Future updateStatBar(StatBarsCompanion statBar) => update(statBars).replace(statBar);
+  Future deleteStatBar(StatBarsCompanion statBar) => delete(statBars).delete(statBar);
 }

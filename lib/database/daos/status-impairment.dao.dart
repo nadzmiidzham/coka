@@ -10,7 +10,7 @@ class StatusImpairmentDao extends DatabaseAccessor<DB> with _$StatusImpairmentDa
 
   Future<List<StatusImpairment>> getAllStatusImpairments() => select(statusImpairments).get();
   Stream<List<StatusImpairment>> watchAllStatusImpairments() => select(statusImpairments).watch();
-  Future<int> insertStatusImpairment(StatusImpairment statusImpairment) => into(statusImpairments).insert(statusImpairment);
-  Future updateStatusImpairment(StatusImpairment statusImpairment) => update(statusImpairments).replace(statusImpairment);
-  Future deleteStatusImpairment(StatusImpairment statusImpairment) => delete(statusImpairments).delete(statusImpairment);
+  Future<int> insertStatusImpairment(StatusImpairmentsCompanion statusImpairment) => into(statusImpairments).insert(statusImpairment);
+  Future updateStatusImpairment(StatusImpairmentsCompanion statusImpairment) => update(statusImpairments).replace(statusImpairment);
+  Future deleteStatusImpairment(StatusImpairmentsCompanion statusImpairment) => delete(statusImpairments).delete(statusImpairment);
 }
