@@ -3,7 +3,7 @@ import 'package:coka/widgets/player-stat-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PlayerPage extends StatelessWidget {
+class PlayerTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

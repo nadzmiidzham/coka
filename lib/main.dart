@@ -1,6 +1,9 @@
+import 'package:coka/pages/about-page.dart';
 import 'package:coka/pages/home-page.dart';
+import 'package:coka/pages/tutorial-page.dart';
 import 'package:coka/providers/creature-provider.dart';
 import 'package:coka/providers/player-provider.dart';
+import 'package:coka/providers/tutorial-provider.dart';
 import 'package:coka/services/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => PlayerProvider()),
         ChangeNotifierProvider(create: (_) => CreatureProvider()),
+        ChangeNotifierProvider(create: (_) => TutorialProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -27,6 +31,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => HomePage(),
+          '/tutorial': (context) => TutorialPage(),
+          '/about': (context) => AboutPage(),
         },
       ),
     );

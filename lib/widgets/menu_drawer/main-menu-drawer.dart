@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// TODO: remove "Home" menu when in homepage
+
 class MainMenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,14 @@ class MainMenuDrawer extends StatelessWidget {
             title: Text('Tutorial'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/tutorial');
+            },
+          ),
+          ListTile(
+            title: Text('About'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/about');
             },
           ),
         ],

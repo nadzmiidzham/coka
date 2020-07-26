@@ -1,7 +1,6 @@
 import 'package:coka/models/Ability.dart';
 import 'package:coka/models/StatusAilment.dart';
 import 'package:coka/models/Worker.dart';
-import 'package:flutter/cupertino.dart';
 
 class Player {
   String name;
