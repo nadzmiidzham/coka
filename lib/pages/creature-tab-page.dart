@@ -4,7 +4,7 @@ import 'package:coka/widgets/creature-stat-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CreaturePage extends StatelessWidget {
+class CreatureTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
