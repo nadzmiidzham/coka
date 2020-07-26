@@ -239,14 +239,13 @@ class AbilitiesCompanion extends UpdateCompanion<Ability> {
     @required String config,
     @required String difficultyCode,
     @required int value,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : imagePath = Value(imagePath),
         name = Value(name),
         config = Value(config),
         difficultyCode = Value(difficultyCode),
-        value = Value(value),
-        createdAt = Value(createdAt);
+        value = Value(value);
   static Insertable<Ability> custom({
     Expression<int> id,
     Expression<String> imagePath,
@@ -439,11 +438,8 @@ class $AbilitiesTable extends Abilities
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -525,8 +521,6 @@ class $AbilitiesTable extends Abilities
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -863,7 +857,7 @@ class CreaturesCompanion extends UpdateCompanion<Creature> {
     @required int xp,
     @required int curHp,
     @required int maxHp,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : creatureTemplateId = Value(creatureTemplateId),
         gameSessionId = Value(gameSessionId),
@@ -873,8 +867,7 @@ class CreaturesCompanion extends UpdateCompanion<Creature> {
         name = Value(name),
         xp = Value(xp),
         curHp = Value(curHp),
-        maxHp = Value(maxHp),
-        createdAt = Value(createdAt);
+        maxHp = Value(maxHp);
   static Insertable<Creature> custom({
     Expression<int> id,
     Expression<int> creatureTemplateId,
@@ -1150,11 +1143,8 @@ class $CreaturesTable extends Creatures
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -1265,8 +1255,6 @@ class $CreaturesTable extends Creatures
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -1441,11 +1429,10 @@ class CreatureAbilitiesCompanion extends UpdateCompanion<CreatureAbility> {
     this.id = const Value.absent(),
     @required int creatureId,
     @required int abilityId,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : creatureId = Value(creatureId),
-        abilityId = Value(abilityId),
-        createdAt = Value(createdAt);
+        abilityId = Value(abilityId);
   static Insertable<CreatureAbility> custom({
     Expression<int> id,
     Expression<int> creatureId,
@@ -1554,11 +1541,8 @@ class $CreatureAbilitiesTable extends CreatureAbilities
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -1607,8 +1591,6 @@ class $CreatureAbilitiesTable extends CreatureAbilities
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -1785,11 +1767,10 @@ class CreatureStatusImpairmentsCompanion
     this.id = const Value.absent(),
     @required int creatureId,
     @required int statusImpairmentId,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : creatureId = Value(creatureId),
-        statusImpairmentId = Value(statusImpairmentId),
-        createdAt = Value(createdAt);
+        statusImpairmentId = Value(statusImpairmentId);
   static Insertable<CreatureStatusImpairment> custom({
     Expression<int> id,
     Expression<int> creatureId,
@@ -1901,11 +1882,8 @@ class $CreatureStatusImpairmentsTable extends CreatureStatusImpairments
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -1957,8 +1935,6 @@ class $CreatureStatusImpairmentsTable extends CreatureStatusImpairments
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -2155,11 +2131,10 @@ class CreatureTemplatesCompanion extends UpdateCompanion<CreatureTemplate> {
     @required String imagePath,
     @required String name,
     this.description = const Value.absent(),
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : imagePath = Value(imagePath),
-        name = Value(name),
-        createdAt = Value(createdAt);
+        name = Value(name);
   static Insertable<CreatureTemplate> custom({
     Expression<int> id,
     Expression<String> imagePath,
@@ -2290,11 +2265,8 @@ class $CreatureTemplatesTable extends CreatureTemplates
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -2347,8 +2319,6 @@ class $CreatureTemplatesTable extends CreatureTemplates
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -2543,11 +2513,10 @@ class GameLogsCompanion extends UpdateCompanion<GameLog> {
     @required int gameSessionId,
     @required String action,
     this.description = const Value.absent(),
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : gameSessionId = Value(gameSessionId),
-        action = Value(action),
-        createdAt = Value(createdAt);
+        action = Value(action);
   static Insertable<GameLog> custom({
     Expression<int> id,
     Expression<int> gameSessionId,
@@ -2679,11 +2648,8 @@ class $GameLogsTable extends GameLogs with TableInfo<$GameLogsTable, GameLog> {
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -2738,8 +2704,6 @@ class $GameLogsTable extends GameLogs with TableInfo<$GameLogsTable, GameLog> {
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -2972,14 +2936,13 @@ class GameSessionsCompanion extends UpdateCompanion<GameSession> {
     @required String timeCode,
     @required int hope,
     @required int morale,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : storyId = Value(storyId),
         resultCode = Value(resultCode),
         timeCode = Value(timeCode),
         hope = Value(hope),
-        morale = Value(morale),
-        createdAt = Value(createdAt);
+        morale = Value(morale);
   static Insertable<GameSession> custom({
     Expression<int> id,
     Expression<int> storyId,
@@ -3148,11 +3111,8 @@ class $GameSessionsTable extends GameSessions
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -3219,8 +3179,6 @@ class $GameSessionsTable extends GameSessions
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -3413,11 +3371,10 @@ class ItemsCompanion extends UpdateCompanion<Item> {
     @required String imagePath,
     @required String name,
     this.description = const Value.absent(),
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : imagePath = Value(imagePath),
-        name = Value(name),
-        createdAt = Value(createdAt);
+        name = Value(name);
   static Insertable<Item> custom({
     Expression<int> id,
     Expression<String> imagePath,
@@ -3547,11 +3504,8 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -3604,8 +3558,6 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -3778,11 +3730,10 @@ class ItemStoragesCompanion extends UpdateCompanion<ItemStorage> {
     this.id = const Value.absent(),
     @required int gameSessionId,
     @required int itemId,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : gameSessionId = Value(gameSessionId),
-        itemId = Value(itemId),
-        createdAt = Value(createdAt);
+        itemId = Value(itemId);
   static Insertable<ItemStorage> custom({
     Expression<int> id,
     Expression<int> gameSessionId,
@@ -3893,11 +3844,8 @@ class $ItemStoragesTable extends ItemStorages
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -3946,8 +3894,6 @@ class $ItemStoragesTable extends ItemStorages
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -4262,7 +4208,7 @@ class PlayersCompanion extends UpdateCompanion<Player> {
     @required int level,
     @required int curHp,
     @required int maxHp,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : playerTemplateId = Value(playerTemplateId),
         gameSessionId = Value(gameSessionId),
@@ -4271,8 +4217,7 @@ class PlayersCompanion extends UpdateCompanion<Player> {
         colorCode = Value(colorCode),
         level = Value(level),
         curHp = Value(curHp),
-        maxHp = Value(maxHp),
-        createdAt = Value(createdAt);
+        maxHp = Value(maxHp);
   static Insertable<Player> custom({
     Expression<int> id,
     Expression<int> playerTemplateId,
@@ -4526,11 +4471,8 @@ class $PlayersTable extends Players with TableInfo<$PlayersTable, Player> {
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -4635,8 +4577,6 @@ class $PlayersTable extends Players with TableInfo<$PlayersTable, Player> {
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -4813,11 +4753,10 @@ class PlayerStatusImpairmentsCompanion
     this.id = const Value.absent(),
     @required int playerId,
     @required int statusImpairmentId,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : playerId = Value(playerId),
-        statusImpairmentId = Value(statusImpairmentId),
-        createdAt = Value(createdAt);
+        statusImpairmentId = Value(statusImpairmentId);
   static Insertable<PlayerStatusImpairment> custom({
     Expression<int> id,
     Expression<int> playerId,
@@ -4929,11 +4868,8 @@ class $PlayerStatusImpairmentsTable extends PlayerStatusImpairments
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -4983,8 +4919,6 @@ class $PlayerStatusImpairmentsTable extends PlayerStatusImpairments
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -5178,11 +5112,10 @@ class PlayerTemplatesCompanion extends UpdateCompanion<PlayerTemplate> {
     @required String imagePath,
     @required String name,
     this.description = const Value.absent(),
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : imagePath = Value(imagePath),
-        name = Value(name),
-        createdAt = Value(createdAt);
+        name = Value(name);
   static Insertable<PlayerTemplate> custom({
     Expression<int> id,
     Expression<String> imagePath,
@@ -5313,11 +5246,8 @@ class $PlayerTemplatesTable extends PlayerTemplates
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -5370,8 +5300,6 @@ class $PlayerTemplatesTable extends PlayerTemplates
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -5630,14 +5558,13 @@ class ScenariosCompanion extends UpdateCompanion<Scenario> {
     @required String title,
     this.description = const Value.absent(),
     @required String config,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : storyId = Value(storyId),
         introImagePath = Value(introImagePath),
         setupImagePath = Value(setupImagePath),
         title = Value(title),
-        config = Value(config),
-        createdAt = Value(createdAt);
+        config = Value(config);
   static Insertable<Scenario> custom({
     Expression<int> id,
     Expression<int> storyId,
@@ -5832,11 +5759,8 @@ class $ScenariosTable extends Scenarios
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -5920,8 +5844,6 @@ class $ScenariosTable extends Scenarios
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -6129,13 +6051,12 @@ class StatBarsCompanion extends UpdateCompanion<StatBar> {
     @required int xp,
     @required int hp,
     @required String config,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : level = Value(level),
         xp = Value(xp),
         hp = Value(hp),
-        config = Value(config),
-        createdAt = Value(createdAt);
+        config = Value(config);
   static Insertable<StatBar> custom({
     Expression<int> id,
     Expression<int> level,
@@ -6283,11 +6204,8 @@ class $StatBarsTable extends StatBars with TableInfo<$StatBarsTable, StatBar> {
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -6344,8 +6262,6 @@ class $StatBarsTable extends StatBars with TableInfo<$StatBarsTable, StatBar> {
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -6559,12 +6475,11 @@ class StatusImpairmentsCompanion extends UpdateCompanion<StatusImpairment> {
     @required String name,
     this.description = const Value.absent(),
     @required int value,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : imagePath = Value(imagePath),
         name = Value(name),
-        value = Value(value),
-        createdAt = Value(createdAt);
+        value = Value(value);
   static Insertable<StatusImpairment> custom({
     Expression<int> id,
     Expression<String> imagePath,
@@ -6715,11 +6630,8 @@ class $StatusImpairmentsTable extends StatusImpairments
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -6778,8 +6690,6 @@ class $StatusImpairmentsTable extends StatusImpairments
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -6974,11 +6884,10 @@ class StoriesCompanion extends UpdateCompanion<Story> {
     @required String imagePath,
     @required String title,
     this.description = const Value.absent(),
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : imagePath = Value(imagePath),
-        title = Value(title),
-        createdAt = Value(createdAt);
+        title = Value(title);
   static Insertable<Story> custom({
     Expression<int> id,
     Expression<String> imagePath,
@@ -7108,11 +7017,8 @@ class $StoriesTable extends Stories with TableInfo<$StoriesTable, Story> {
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -7165,8 +7071,6 @@ class $StoriesTable extends Stories with TableInfo<$StoriesTable, Story> {
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -7359,12 +7263,11 @@ class WorkersCompanion extends UpdateCompanion<Worker> {
     @required int playerId,
     @required int no,
     @required String colorCode,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : playerId = Value(playerId),
         no = Value(no),
-        colorCode = Value(colorCode),
-        createdAt = Value(createdAt);
+        colorCode = Value(colorCode);
   static Insertable<Worker> custom({
     Expression<int> id,
     Expression<int> playerId,
@@ -7492,11 +7395,8 @@ class $WorkersTable extends Workers with TableInfo<$WorkersTable, Worker> {
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -7548,8 +7448,6 @@ class $WorkersTable extends Workers with TableInfo<$WorkersTable, Worker> {
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
@@ -7722,11 +7620,10 @@ class WorkerItemsCompanion extends UpdateCompanion<WorkerItem> {
     this.id = const Value.absent(),
     @required int workerId,
     @required int itemId,
-    @required DateTime createdAt,
+    this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   })  : workerId = Value(workerId),
-        itemId = Value(itemId),
-        createdAt = Value(createdAt);
+        itemId = Value(itemId);
   static Insertable<WorkerItem> custom({
     Expression<int> id,
     Expression<int> workerId,
@@ -7835,11 +7732,8 @@ class $WorkerItemsTable extends WorkerItems
   @override
   GeneratedDateTimeColumn get createdAt => _createdAt ??= _constructCreatedAt();
   GeneratedDateTimeColumn _constructCreatedAt() {
-    return GeneratedDateTimeColumn(
-      'created_at',
-      $tableName,
-      false,
-    );
+    return GeneratedDateTimeColumn('created_at', $tableName, false,
+        defaultValue: currentDateAndTime);
   }
 
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
@@ -7886,8 +7780,6 @@ class $WorkerItemsTable extends WorkerItems
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at'], _createdAtMeta));
-    } else if (isInserting) {
-      context.missing(_createdAtMeta);
     }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,

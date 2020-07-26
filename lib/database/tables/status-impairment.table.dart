@@ -6,6 +6,6 @@ class StatusImpairments extends Table {
   TextColumn get name => text()();
   TextColumn get description => text().nullable()();
   IntColumn get value => integer()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }

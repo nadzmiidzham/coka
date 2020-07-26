@@ -9,6 +9,6 @@ class Abilities extends Table {
   TextColumn get config => text()();
   TextColumn get difficultyCode => text()();
   IntColumn get value => integer()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }

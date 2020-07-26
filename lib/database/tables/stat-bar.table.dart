@@ -6,6 +6,6 @@ class StatBars extends Table {
   IntColumn get xp => integer()();
   IntColumn get hp => integer()();
   TextColumn get config => text()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }
