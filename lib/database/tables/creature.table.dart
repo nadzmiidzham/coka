@@ -12,6 +12,6 @@ class Creatures extends Table {
   IntColumn get xp => integer()();
   IntColumn get curHp => integer()();
   IntColumn get maxHp => integer()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }

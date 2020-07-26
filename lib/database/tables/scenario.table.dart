@@ -8,6 +8,6 @@ class Scenarios extends Table {
   TextColumn get title => text()();
   TextColumn get description => text().nullable()();
   TextColumn get config => text()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }
