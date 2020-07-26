@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:coka/database/daos/ability.dao.dart';
 import 'package:coka/database/daos/creature-ability.dao.dart';
@@ -36,6 +37,7 @@ import 'package:coka/database/tables/status-impairment.table.dart';
 import 'package:coka/database/tables/story.table.dart';
 import 'package:coka/database/tables/worker-item.table.dart';
 import 'package:coka/database/tables/worker.table.dart';
+import 'package:flutter/services.dart';
 import 'package:moor/moor.dart';
 import 'package:moor_ffi/moor_ffi.dart';
 import 'package:path_provider/path_provider.dart';
@@ -100,6 +102,20 @@ class DB extends _$DB {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-    onUpgrade: (migrator, from, to) async {}
+    beforeOpen: (details) async {
+      // if first time, replace db file with seeded db file
+      if(details.wasCreated) {
+        final seederDbFile = await rootBundle.load('files/db.sqlite');
+        final generatedDbFile = File(path.join((await getApplicationDocumentsDirectory()).path, 'db.sqlite'));
+
+        if(await generatedDbFile.exists()) {
+          await replaceDBFile(seederDbFile, generatedDbFile);
+        }
+      }
+    }
   );
+
+  Future replaceDBFile(ByteData data, File file) async {
+    return file.writeAsBytes(data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
+  }
 }
