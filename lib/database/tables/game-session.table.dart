@@ -7,6 +7,6 @@ class GameSessions extends Table {
   TextColumn get timeCode => text()();
   IntColumn get hope => integer()();
   IntColumn get morale => integer()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }

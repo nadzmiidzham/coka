@@ -11,6 +11,6 @@ class Players extends Table {
   IntColumn get level => integer()();
   IntColumn get curHp => integer()();
   IntColumn get maxHp => integer()();
-  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 }
