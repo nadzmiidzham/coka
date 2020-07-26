@@ -24,6 +24,7 @@ dependencies:
   moor_ffi:
   path_provider:
   path:
+  kiwi:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -34,6 +35,7 @@ dev_dependencies:
     sdk: flutter
   moor_generator:
   build_runner:
+  kiwi_generator:
 
 
 # For information on the generic Dart part of this file, see the

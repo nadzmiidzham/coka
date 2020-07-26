@@ -1,10 +1,14 @@
 import 'package:coka/pages/home-page.dart';
 import 'package:coka/providers/creature-provider.dart';
 import 'package:coka/providers/player-provider.dart';
+import 'package:coka/services/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Injector.setup();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
